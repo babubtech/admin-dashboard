@@ -9,7 +9,9 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import CalendarTodayIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    marginBottom: 16
+  },
   dates: {
     display: 'flex',
     alignItems: 'center',
@@ -91,7 +93,7 @@ const Header = props => {
             gutterBottom
             variant="h3"
           >
-            Finance Overview
+            Dashboard Overview
           </Typography>
         </Grid>
         <Grid
