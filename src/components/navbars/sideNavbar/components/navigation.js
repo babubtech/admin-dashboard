@@ -63,7 +63,7 @@ debugger
     items.push(
       <NavigationListItem
         depth={depth}
-        href={page.href}
+        href={page.href??""}
         icon={page.icon}
         key={page.title}
         label={page.label}

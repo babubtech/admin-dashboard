@@ -62,7 +62,7 @@ export const SideNavBar = (props) => {
             alt="Person"
             className={classes.avatar}
             component={RouterLink}
-            src={session?.user?.avatar??""}
+            src={session?.user?.avatar??"https://source.unsplash.com/user/c_v_r/100x100"}
             to="/profile/1/timeline"
           />
           <Typography
@@ -71,7 +71,8 @@ export const SideNavBar = (props) => {
           >
             {/* {session.user.first_name} {session.user.last_name} */}
           </Typography>
-          <Typography variant="body2">{"session.user.bio"}</Typography>
+          <Typography variant="body2">{"User Name"}</Typography>
+          <Typography variant="body2" color={"ActiveCaption"} >{"Admin"}</Typography>
         </div>
         <Divider className={classes.divider} />
         <nav className={classes.navigation}>

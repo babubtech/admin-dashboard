@@ -11,7 +11,8 @@ import {
   NotFound,
   Home,
   Login,
-  Dashboard
+  Dashboard,
+  Users
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -22,15 +23,23 @@ const RouterApp = (props) => {
 
         {/* Home Route */}
         <Route path={AppRoutes.home} element={
-          <PrivateRouter path={AppRoutes.home}>
-            <Home />
+          <PrivateRouter path={AppRoutes.dashboard}>
+            {/* <Home /> */}
+            <Dashboard />
           </PrivateRouter>
         } />
 
-        {/* Home Route */}
+        {/* Dashboard Route */}
         <Route path={AppRoutes.dashboard} element={
           <PrivateRouter path={AppRoutes.dashboard}>
             <Dashboard />
+          </PrivateRouter>
+        } />
+
+        {/* users Route */}
+        <Route path={AppRoutes.users} element={
+          <PrivateRouter path={AppRoutes.users}>
+            <Users />
           </PrivateRouter>
         } />
 

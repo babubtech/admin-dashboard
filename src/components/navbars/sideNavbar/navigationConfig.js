@@ -6,6 +6,8 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ChatIcon from '@mui/icons-material/ChatOutlined';
 import CodeIcon from '@mui/icons-material/Code';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import SettingIcon from '@mui/icons-material/Settings';
 import DashboardIcon from '@mui/icons-material/DashboardOutlined';
 import ErrorIcon from '@mui/icons-material/ErrorOutline';
 import FolderIcon from '@mui/icons-material/FolderOutlined';
@@ -13,7 +15,7 @@ import HomeIcon from '@mui/icons-material/HomeOutlined';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import LockOpenIcon from '@mui/icons-material/LockOpenOutlined';
 import MailIcon from '@mui/icons-material/MailOutlined';
-import PresentToAllIcon from '@mui/icons-material/PresentToAll';
+// import PresentToAllIcon from '@mui/icons-material/PresentToAll';
 import PeopleIcon from '@mui/icons-material/PeopleOutlined';
 import PersonIcon from '@mui/icons-material/PersonOutlined';
 import ReceiptIcon from '@mui/icons-material/ReceiptOutlined';
@@ -27,8 +29,8 @@ export default [
     title: 'Pages',
     pages: [
       {
-        title: 'Overview',
-        href: '/overview',
+        title: 'Dashboard',
+        href: '/dashboard',
         icon: HomeIcon
       },
       {
@@ -48,103 +50,103 @@ export default [
       },
       {
         title: 'Management',
-        href: '/management',
+        href: '/',
         icon: BarChartIcon,
         children: [
           {
             title: 'Customers',
-            href: '/management/customers'
+            href: '/'
           },
           {
             title: 'Customer Details',
-            href: '/management/customers/1/summary'
+            href: '/'
           },
           {
             title: 'Projects',
-            href: '/management/projects'
+            href: '/'
           },
           {
             title: 'Orders',
-            href: '/management/orders'
+            href: '/'
           },
           {
             title: 'Order Details',
-            href: '/management/orders/1'
+            href: '/'
           }
         ]
       },
       {
-        title: 'Social Feed',
-        href: '/social-feed',
+        title: 'Users',
+        href: '/users',
         icon: PeopleIcon
       },
       {
         title: 'Profile',
-        href: '/profile',
+        href: '/',
         icon: PersonIcon,
         children: [
           {
             title: 'Timeline',
-            href: '/profile/1/timeline'
+            href: '/'
           },
           {
             title: 'Connections',
-            href: '/profile/1/connections'
+            href: '/'
           },
           {
             title: 'Projects',
-            href: '/profile/1/projects'
+            href: '/'
           },
           {
             title: 'Reviews',
-            href: '/profile/1/reviews'
+            href: '/'
           }
         ]
       },
       {
         title: 'Project',
-        href: '/projects',
+        href: '/',
         icon: FolderIcon,
         children: [
           {
             title: 'Browse',
-            href: '/projects'
+            href: '/'
           },
           {
             title: 'Create',
-            href: '/projects/create'
+            href: '/'
           },
           {
             title: 'Overview',
-            href: '/projects/1/overview'
+            href: '/'
           },
           {
             title: 'Files',
-            href: '/projects/1/files'
+            href: '/'
           },
           {
             title: 'Activity',
-            href: '/projects/1/activity'
+            href: '/'
           },
           {
             title: 'Subscribers',
-            href: '/projects/1/subscribers'
+            href: '/'
           }
         ]
       },
       {
         title: 'Invoice',
-        href: '/invoices/1',
+        href: '/',
         icon: ReceiptIcon
       },
       {
         title: 'Kanban Board',
-        href: '/kanban-board',
+        href: '/',
         icon: ListAltIcon
       },
       {
         title: 'Mail',
-        href: '/mail',
+        href: '/',
         icon: MailIcon,
         label: () => (
           <Label
@@ -157,7 +159,7 @@ export default [
       },
       {
         title: 'Chat',
-        href: '/chat',
+        href: '/',
         icon: ChatIcon,
         label: () => (
           <Label
@@ -170,85 +172,95 @@ export default [
       },
       {
         title: 'Calendar',
-        href: '/calendar',
+        href: '/',
         icon: CalendarTodayIcon,
         label: () => <Label color={colors.green[500]}>New</Label>
       },
       {
         title: 'Settings',
-        href: '/settings',
+        href: '/',
         icon: SettingsIcon,
         children: [
           {
             title: 'General',
-            href: '/settings/general'
+            href: '/'
           },
           {
             title: 'Subscription',
-            href: '/settings/subscription'
+            href: '/'
           },
           {
             title: 'Notifications',
-            href: '/settings/notifications'
+            href: '/'
           },
           {
             title: 'Security',
-            href: '/settings/security'
+            href: '/'
           }
         ]
       },
       {
         title: 'Authentication',
-        href: '/auth',
+        href: '/',
         icon: LockOpenIcon,
         children: [
           {
             title: 'Login',
-            href: '/auth/login'
+            href: '/'
           },
           {
             title: 'Register',
-            href: '/auth/register'
+            href: '//register'
           }
         ]
       },
       {
         title: 'Errors',
-        href: '/errors',
+        href: '/',
         icon: ErrorIcon,
         children: [
           {
             title: 'Error 401',
-            href: '/errors/error-401'
+            href: '/'
           },
           {
             title: 'Error 404',
-            href: '/errors/error-404'
+            href: '/'
           },
           {
             title: 'Error 500',
-            href: '/errors/error-500'
+            href: '/'
           }
         ]
       }
     ]
   },
   {
-    title: 'Support',
+    title: 'Settings',
     pages: [
       {
-        title: 'Presentation',
-        href: '/presentation',
-        icon: PresentToAllIcon
+        title: 'Profile',
+        href: '/profile',
+        icon: AssignmentIndIcon
       },
       {
-        title: 'Getting started',
-        href: '/getting-started',
+        title: 'Change Password',
+        href: '/',
+        icon: LockOpenIcon
+      },
+      {
+        title: 'Preferences',
+        href: '/',
         icon: CodeIcon
       },
       {
+        title: 'Settings',
+        href: '/settings',
+        icon: SettingIcon
+      },
+      {
         title: 'Changelog',
-        href: '/changelog',
+        href: '/',
         icon: ViewModuleIcon,
         label: () => <Label color={colors.blue['500']}>v1.2.0</Label>
       }

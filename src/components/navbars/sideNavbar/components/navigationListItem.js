@@ -142,7 +142,7 @@ const NavigationListItem = props => {
         <Button
           activeClassName={classes.active}
           className={clsx(classes.buttonLeaf, `depth-${depth}`)}
-        //   component={CustomRouterLink}
+          component={CustomRouterLink}
           exact
           style={style}
           to={href}

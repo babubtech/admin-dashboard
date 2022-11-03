@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link as RouterLink, useNavigate} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@mui/styles';
@@ -18,7 +18,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  ClickAwayListener
+  ClickAwayListener,
+  Typography
 } from '@mui/material';
 import LockIcon from '@mui/icons-material/LockOutlined';
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
@@ -27,10 +28,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { LocalStorageKeys } from '../../../utils';
 import { AppRoutes } from '../../../router/routes';
-
 // import axios from 'utils/axios';
 // import useRouter from 'utils/useRouter';
-// import { PricingModal, NotificationsPopover } from 'components';
+import NotificationsPopover from '../../NotificationsPopover';
 // import { logout } from 'actions';
 
 const useStyles = makeStyles(theme => ({
@@ -91,6 +91,9 @@ const useStyles = makeStyles(theme => ({
   },
   logoutIcon: {
     marginRight: theme.spacing(1)
+  },
+  headerTitle: {
+    color: "#fff"
   }
 }));
 
@@ -99,7 +102,7 @@ export const TopNavBar = (props) => {
   const navigate = useNavigate();
   const classes = useStyles();
   // const searchRef = useRef(null);
-  // const notificationsRef = useRef(null);
+  const notificationsRef = useRef(null);
   const [pricingModalOpen, setPricingModalOpen] = useState(false);
   const [openSearchPopover, setOpenSearchPopover] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -182,14 +185,20 @@ export const TopNavBar = (props) => {
       color="primary"
     >
       <Toolbar>
-        <RouterLink to="/">
-          <img
+        <RouterLink to="/" style={{textDecoration: "none"}} >
+          {/* <img
             alt="Logo"
             src="/images/logo--white.svg"
-          />
+          /> */}
+          <Typography 
+              component="h1"
+              gutterBottom
+              variant="h3"
+              className={classes.headerTitle} 
+          >{"KCDS"}</Typography>
         </RouterLink>
         <div className={classes.flexGrow} />
-        <Hidden smDown>
+        {/* <Hidden smDown>
           <div
             className={classes.search}
             // ref={searchRef}
@@ -239,18 +248,18 @@ export const TopNavBar = (props) => {
             <LockIcon className={classes.trialIcon} />
             Trial expired
           </Button>
-        </Hidden>
+        </Hidden> */}
         <Hidden mdDown>
           <IconButton
             className={classes.notificationsButton}
             color="inherit"
             onClick={handleNotificationsOpen}
-            // ref={notificationsRef}
+            ref={notificationsRef}
           >
             <Badge
-              badgeContent={notifications.length}
+              badgeContent={2}
               classes={{ badge: classes.notificationsBadge }}
-              variant="dot"
+              // variant="dot"
             >
               <NotificationsIcon />
             </Badge>
@@ -276,13 +285,13 @@ export const TopNavBar = (props) => {
       {/* <PricingModal
         onClose={handlePricingClose}
         open={pricingModalOpen}
-      />
+      /> */}
       <NotificationsPopover
         anchorEl={notificationsRef.current}
         notifications={notifications}
         onClose={handleNotificationsClose}
         open={openNotifications}
-      /> */}
+      />
     </AppBar>
   );
 }
