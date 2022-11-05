@@ -7,12 +7,14 @@ import {
   CardHeader,
   CardContent,
   Divider,
-  Typography
+  Typography,
+  colors
 } from '@mui/material';
 
 // import axios from 'utils/axios';
 import { GenericMoreButton } from '../../../../components';
 import { Chart } from './components';
+
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -52,15 +54,37 @@ const EarningsSegmentation = props => {
   useEffect(() => {
     let mounted = true;
 
-    // const fetchEarnings = () => {
-    //   axios.get('/api/dashboard/earnings').then(response => {
-    //     if (mounted) {
-    //       setEarnings(response.data.earnings);
-    //     }
-    //   });
-    // };
+    const fetchEarnings = () => {
+      // axios.get('/api/dashboard/earnings').then(response => {
+      //   if (mounted) {
+      //     setEarnings(response.data.earnings);
+      //   }
+      // });
 
-    // fetchEarnings();
+      setEarnings([
+        {
+          id: 1,
+          label: 'Subscriptions',
+          value: 56,
+          color: colors.indigo[500]
+        },
+        {
+          id: 12,
+          label: 'Afiliate',
+          value: 24,
+          color: colors.indigo[300]
+        },
+        {
+          id: 13,
+          label: 'Sales',
+          value: 20,
+          color: colors.indigo[100]
+        }
+      ])
+
+    };
+
+    fetchEarnings();
 
     return () => {
       mounted = false;
@@ -79,10 +103,10 @@ const EarningsSegmentation = props => {
       <Divider />
       <CardContent className={classes.content}>
         <div className={classes.chartContainer}>
-          {/* <Chart
+          <Chart
             className={classes.chart}
             data={earnings}
-          /> */}
+          />
         </div>
         <Divider />
         <div className={classes.statsContainer}>

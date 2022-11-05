@@ -59,34 +59,34 @@ export const Dashboard = () => {
         >
           <EarningsSegmentation />
         </Grid>
-        <Grid
+        {/* <Grid
           item
           lg={8}
           xs={12}
         >
           <LatestOrders />
-        </Grid>
-        <Grid
+        </Grid> */}
+        {/* <Grid
           item
           lg={4}
           xs={12}
         >
           <CustomerActivity />
-        </Grid>
-        <Grid
+        </Grid> */}
+        {/* <Grid
           item
           lg={8}
           xs={12}
         >
           <MostProfitableProducts />
-        </Grid>
-        <Grid
+        </Grid> */}
+        {/* <Grid
           item
           lg={4}
           xs={12}
         >
           <TopReferrals />
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

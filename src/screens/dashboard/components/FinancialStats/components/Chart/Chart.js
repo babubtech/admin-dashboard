@@ -20,11 +20,13 @@ const Chart = props => {
   const data = {
     datasets: [
       {
+        id:0,
         label: 'This year',
         backgroundColor: theme.palette.primary.main,
         data: dataProp.thisYear
       },
       {
+        id:1,
         label: 'Last year',
         backgroundColor: colors.grey[200],
         data: dataProp.lastYear
@@ -118,10 +120,11 @@ const Chart = props => {
       {...rest}
       className={clsx(classes.root, className)}
     >
-      {/* <Bar
+      <Bar
         data={data}
         options={options}
-      /> */}
+        id={data?.[0]?.id}
+      />
     </div>
   );
 };

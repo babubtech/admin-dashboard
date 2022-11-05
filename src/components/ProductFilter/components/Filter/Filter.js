@@ -279,7 +279,7 @@ const Filter = props => {
             <Autocomplete
                   
                   id="combo-box-demo"
-                  options={masters.commodity}
+                  options={[]}
                   margin="dense"
                   fullWidth
                   value={values.commodity}

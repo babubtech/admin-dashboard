@@ -41,10 +41,10 @@ const Overview = props => {
   const classes = useStyles();
 
   const data = {
-    income: '854,355.00',
-    expanses: '373,250.50',
-    profit: '123,532.00',
-    subscriptions: '26,000'
+    income: '854',
+    expanses: '373',
+    profit: '1227',
+    subscriptions: '26'
   };
 
   return (
@@ -69,10 +69,10 @@ const Overview = props => {
             gutterBottom
             variant="overline"
           >
-            Total Income
+            New Users
           </Typography>
           <div className={classes.valueContainer}>
-            <Typography variant="h3">${data.income}</Typography>
+            <Typography variant="h3">{data.income}</Typography>
             <Label
               className={classes.label}
               color={colors.green[600]}
@@ -94,10 +94,10 @@ const Overview = props => {
             gutterBottom
             variant="overline"
           >
-            Total Expanses
+            Active Users
           </Typography>
           <div className={classes.valueContainer}>
-            <Typography variant="h3">${data.expanses}</Typography>
+            <Typography variant="h3">{data.expanses}</Typography>
             <Label
               className={classes.label}
               color={colors.green[600]}
@@ -119,7 +119,7 @@ const Overview = props => {
             gutterBottom
             variant="overline"
           >
-            Net Profit
+            Total Users
           </Typography>
           <div className={classes.valueContainer}>
             <Typography variant="h3">{data.profit}</Typography>
@@ -144,7 +144,7 @@ const Overview = props => {
             gutterBottom
             variant="overline"
           >
-            Active Subscriptions
+            Total Posts
           </Typography>
           <div className={classes.valueContainer}>
             <Typography variant="h3">{data.subscriptions}</Typography>
