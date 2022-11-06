@@ -6,12 +6,42 @@ import {
   Button,
   Drawer,
   TextField,
-  Grid
+  Grid,
+  Typography
 } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 // import { NetworkContext } from '../../../../context/NetworkContext';
+import SearchIcon from '@mui/icons-material/Search';
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+
+const marks = [
+  {
+    value: 0,
+    label: '0',
+  },
+  {
+    value: 100,
+    label: '100',
+  },
+];
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -77,8 +107,57 @@ const useStyles = makeStyles(theme => ({
     '& > * + *': {
       marginTop: theme.spacing(2)
     }
+  },
+  datePickerCss: {
+    width: "100%",
+    marginTop: 14,
+    marginBottom: 6
   }
 }));
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  // backgroundColor: alpha(theme.palette.common.white, 0.15),
+  // '&:hover': {
+  //   backgroundColor: alpha(theme.palette.common.white, 0.25),
+  // },
+  marginRight: 0,
+  // marginLeft: 0,
+  width: '100%',
+  // [theme.breakpoints.up('sm')]: {
+  //   marginLeft: theme.spacing(3),
+  //   width: 'auto',
+  // },
+  backgroundColor: "#e0e0e0",
+  marginLeft: 10,
+
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
+
 
 const Filter = props => {
   const { open, onClose,masters, onFilter, className, ...rest } = props;
@@ -98,6 +177,13 @@ const Filter = props => {
   const handleClear = () => {
     setValues({ 
       ...initialValues });
+  };
+
+
+  const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   const handleFieldChange = (event, field, value) => {
@@ -140,6 +226,13 @@ const Filter = props => {
     setValues({
       ...values,
       [type]: e.target.value
+    })
+  }
+
+  const handleDatechange = (type, val) => {
+    setValues({
+      ...values,
+      [type]: val
     })
   }
 
@@ -205,66 +298,77 @@ const Filter = props => {
         onSubmit={handleSubmit}
       >
         <div className={classes.header}>
-          <Button
+          {/* <Button
             onClick={onClose}
             size="small"
           >
             <CloseIcon className={classes.buttonIcon} />
             Close
-          </Button>
+          </Button> */}
+          <Typography style={{paddingLeft: 20, marginBottom: 10 }} variant={"h4"} >Filter</Typography>
         </div>
         <div className={classes.content}>
           <Grid container xs={12} spacing={1}>
-            <Grid item xs={12}>
-                      <TextField
-                            variant="outlined"
-                            margin="dense"
-                            fullWidth
-                            autoComplete="off"
-                            id="vendordeliverydays"
-                            name="vendordeliverydays"
-                            value={values.name}
-                            onChange={handleinputchange('name')}
-                           label="Name"
-                          />
-            </Grid>
+            {/* <Grid item xs={12}> */}
+              <Search style={{marginBottom: 12}} >
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+            {/* </Grid> */}
             <Grid item xs={12}>
             <Autocomplete
                   id="combo-box-demo"
                   options={[
                     {
                       value :1,
-                      label: "Live"
+                      label: "Male"
                     },
                     {
                       value :2,
-                      label: "Rate"
+                      label: "Female"
                     }
                   ]}
                   margin="dense"
                   fullWidth
                   value={values.producttype}
-                 onChange={handleoptionchange('producttype')}
+                  onChange={handleoptionchange('producttype')}
                   getOptionLabel={(option) => option.label}
-                  renderInput={(params) => <TextField {...params} label={"Product Type"} fullWidth margin="dense" variant="outlined" />}
+                  renderInput={(params) => <TextField {...params} label={"Gender"} fullWidth margin="dense" variant="outlined" />}
                 /> 
             </Grid>    
             <Grid item xs={12}>
             <Autocomplete
-                  multiple
+                  // multiple
                   id="combo-box-demo"
                   options={[
                     {
-                      value :"english",
-                      label: "English"
+                      value :"Chennai",
+                      label: "Chennai"
                     },
                     {
-                      value :'tamil',
-                      label: "Tamil"
+                      value :'Delhi',
+                      label: "Delhi"
                     },
                     {
-                      value :'telugu',
-                      label: "Telugu"
+                      value :'Mumbai',
+                      label: "Mumbai"
+                    },
+                    {
+                      value :'Bangalore',
+                      label: "Bangalore"
+                    },
+                    {
+                      value :'Hyderabad',
+                      label: "Hyderabad"
+                    },
+                    {
+                      value :'Ahmedabad',
+                      label: "AhmedabadHyderabad"
                     }
                   ]}
                   margin="dense"
@@ -272,42 +376,164 @@ const Filter = props => {
                   value={values.language}
                  onChange={handleoptionchange('language')}
                   getOptionLabel={(option) => option.label}
-                  renderInput={(params) => <TextField {...params} label={"Language"} fullWidth margin="dense" variant="outlined" />}
+                  renderInput={(params) => <TextField {...params} label={"City"} fullWidth margin="dense" variant="outlined" />}
                 /> 
             </Grid>   
+            {/* kulam */}
             <Grid item xs={12}>
-            <Autocomplete
-                  
-                  id="combo-box-demo"
-                  options={[]}
+                <TextField
+                  variant="outlined"
                   margin="dense"
                   fullWidth
-                  value={values.commodity}
-                 onChange={handleoptionchange('commodity')}
-                  getOptionLabel={(option) => option.label}
-                  renderInput={(params) => <TextField {...params} label={"Commodity"} fullWidth margin="dense" variant="outlined" />}
-                /> 
-            </Grid> 
+                  autoComplete="off"
+                  id="vendordeliverydays"
+                  name="vendordeliverydays"
+                  value={values.kulam}
+                  onChange={handleinputchange('kulam')}
+                  label="Kulam"
+                />
+            </Grid>
+
+            {/* country */}
             <Grid item xs={12}>
             <Autocomplete
-                  multiple
+                  // multiple
                   id="combo-box-demo"
-                  options={subcommodity}
+                  options={[
+                    {
+                      value :"Afghanistan",
+                      label: "Afghanistan"
+                    },
+                    {
+                      value :'Albania',
+                      label: "Albania"
+                    },
+                    {
+                      value :'Belgium',
+                      label: "Belgium"
+                    },
+                    {
+                      value :'Bulgaria',
+                      label: "Bulgaria"
+                    },
+                    {
+                      value :'China',
+                      label: "China"
+                    },
+                    {
+                      value :'India',
+                      label: "India"
+                    }
+                  ]}
                   margin="dense"
                   fullWidth
-                  value={values.subcommodity}
-                 onChange={handleoptionchange('subcommodity')}
+                  value={values.language}
+                 onChange={handleoptionchange('country')}
                   getOptionLabel={(option) => option.label}
-                  renderInput={(params) => <TextField {...params} label={"Sub Commodity"} fullWidth margin="dense" variant="outlined" />}
+                  renderInput={(params) => <TextField {...params} label={"Country"} fullWidth margin="dense" variant="outlined" />}
                 /> 
-            </Grid> 
+            </Grid>   
+
+            {/* age range */}
+            <Grid item xs={12}>
+                <Box sx={{ width: "100%", padding: "0px 10px" }}>
+                  <Typography>Age rage</Typography>
+                  <Slider
+                    getAriaLabel={() => 'Temperature range'}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
+                    marks={marks}
+                    style={{marginBottom: "10px"}}
+                  />
+                </Box>
+            </Grid>
+            
+            {/* company */}
+            <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  autoComplete="off"
+                  id="vendordeliverydays"
+                  name="vendordeliverydays"
+                  value={values.kulam}
+                  onChange={handleinputchange('company')}
+                  label="Company"
+                />
+            </Grid>
+
+            {/* education institute */}
+            <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  autoComplete="off"
+                  id="vendordeliverydays"
+                  name="vendordeliverydays"
+                  value={values.kulam}
+                  onChange={handleinputchange('education_institute')}
+                  label="Education Institute"
+                />
+            </Grid>
+
+            {/* logged in date range */}
+            <Grid item xs={12}>
+              <LocalizationProvider dateAdapter={AdapterDayjs} >
+                <DatePicker
+                  className={classes.datePickerCss}
+                  label="Logged In Date"
+                  value={values?.logDate??null}
+                  onChange={(newValue) => handleDatechange('logDate', newValue)}
+                  renderInput={(params) => <TextField {...params} />}
+                  disableHighlightToday
+                  disablePast
+                  inputFormat={"DD/MM/YYYY"}
+                />
+              </LocalizationProvider>
+            </Grid>
+
+            {/* onboard date rage */}
+            <Grid item xs={12}>
+              <LocalizationProvider dateAdapter={AdapterDayjs} >
+                <DatePicker
+                  className={classes.datePickerCss}
+                  label="Onboard Date"
+                  value={values?.onBoardDate??null}
+                  onChange={(newValue) => handleDatechange('onBoardDate', newValue)}
+                  renderInput={(params) => <TextField {...params} />}
+                  mask={"__/__/____"}
+                  disableHighlightToday
+                  disablePast
+                  inputFormat={"DD/MM/YYYY"}
+                />
+              </LocalizationProvider>
+            </Grid>
+
+            {/* user status */}
+            <Grid item xs={12}>
+              <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label">Status</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                  <FormControlLabel value="inActive" control={<Radio />} label="inActive" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
               </Grid>
         </div>
         <div className={classes.actions}>
           <Button
             fullWidth
             onClick={handleClear}
-            variant="contained"
+            variant={"text"}
           >
             <DeleteIcon className={classes.buttonIcon} />
             Clear

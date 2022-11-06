@@ -51,7 +51,7 @@ const Header = props => {
             size="small"
             // to={'/editproducts/1'}
           >
-            Add Product
+            Add user
           </Button> 
         </Grid>
       </Grid>

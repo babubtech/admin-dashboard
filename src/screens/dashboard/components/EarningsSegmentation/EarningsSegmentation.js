@@ -64,21 +64,15 @@ const EarningsSegmentation = props => {
       setEarnings([
         {
           id: 1,
-          label: 'Subscriptions',
+          label: 'Active User',
           value: 56,
           color: colors.indigo[500]
         },
         {
           id: 12,
-          label: 'Afiliate',
+          label: 'New User',
           value: 24,
           color: colors.indigo[300]
-        },
-        {
-          id: 13,
-          label: 'Sales',
-          value: 20,
-          color: colors.indigo[100]
         }
       ])
 
@@ -97,8 +91,8 @@ const EarningsSegmentation = props => {
       className={clsx(classes.root, className)}
     >
       <CardHeader
-        action={<GenericMoreButton />}
-        title="Earnings Segmentation"
+        // action={<GenericMoreButton />}
+        title="Active User Stats"
       />
       <Divider />
       <CardContent className={classes.content}>

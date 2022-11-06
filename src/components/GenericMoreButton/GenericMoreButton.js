@@ -1,4 +1,4 @@
-import React, { Fragment, useState, memo } from 'react';
+import React, { Fragment, useState, memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({}));
 
 const GenericMoreButton = props => {
   const classes = useStyles();
-  // const moreRef = useRef(null);
+  const moreRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleMenuOpen = () => {
@@ -37,14 +37,14 @@ const GenericMoreButton = props => {
         <IconButton
           {...props}
           onClick={handleMenuOpen}
-          // ref={moreRef}
+          ref={moreRef}
           size="small"
         >
           <MoreIcon />
         </IconButton>
       </Tooltip>
       <Menu
-        // anchorEl={moreRef.current}
+        anchorEl={moreRef.current}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'left'

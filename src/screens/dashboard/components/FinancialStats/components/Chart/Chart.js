@@ -21,13 +21,13 @@ const Chart = props => {
     datasets: [
       {
         id:0,
-        label: 'This year',
+        label: 'New User',
         backgroundColor: theme.palette.primary.main,
         data: dataProp.thisYear
       },
       {
         id:1,
-        label: 'Last year',
+        label: 'Old User',
         backgroundColor: colors.grey[200],
         data: dataProp.lastYear
       }
@@ -75,14 +75,15 @@ const Chart = props => {
             zeroLineColor: theme.palette.divider
           },
           ticks: {
-            padding: 20,
+            padding: 4,
             fontColor: theme.palette.text.secondary,
             beginAtZero: true,
             min: 0,
             maxTicksLimit: 5,
             callback: value => {
-              return value > 0 ? value + 'K' : value;
-            }
+              return value > 0 ? value + '' : value;
+            },
+            color: "New User"
           }
         }
       ]

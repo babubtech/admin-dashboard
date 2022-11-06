@@ -59,6 +59,14 @@ export const Dashboard = () => {
         >
           <EarningsSegmentation />
         </Grid>
+        <Grid
+          item
+          lg={4}
+          xl={3}
+          xs={12}
+        >
+          <EarningsSegmentation />
+        </Grid>
         {/* <Grid
           item
           lg={8}

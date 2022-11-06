@@ -73,13 +73,13 @@ const Overview = props => {
           </Typography>
           <div className={classes.valueContainer}>
             <Typography variant="h3">{data.income}</Typography>
-            <Label
+            {/* <Label
               className={classes.label}
               color={colors.green[600]}
               variant="contained"
             >
               +25%
-            </Label>
+            </Label> */}
           </div>
         </Grid>
         <Grid
@@ -98,13 +98,13 @@ const Overview = props => {
           </Typography>
           <div className={classes.valueContainer}>
             <Typography variant="h3">{data.expanses}</Typography>
-            <Label
+            {/* <Label
               className={classes.label}
               color={colors.green[600]}
               variant="contained"
             >
               +12%
-            </Label>
+            </Label> */}
           </div>
         </Grid>
         <Grid
@@ -123,13 +123,13 @@ const Overview = props => {
           </Typography>
           <div className={classes.valueContainer}>
             <Typography variant="h3">{data.profit}</Typography>
-            <Label
+            {/* <Label
               className={classes.label}
               color={colors.red[600]}
               variant="contained"
             >
               -20%
-            </Label>
+            </Label> */}
           </div>
         </Grid>
         <Grid

@@ -102,7 +102,7 @@ const Header = props => {
           lg={6}
           xs={12}
         >
-          <ButtonGroup variant="contained">
+          {/* <ButtonGroup variant="contained">
             <Button onClick={() => handleCalendarOpen('start')}>
               <CalendarTodayIcon className={classes.calendarTodayIcon} />
               {startDate.format('DD MM YYYY')}
@@ -111,7 +111,7 @@ const Header = props => {
               <CalendarTodayIcon className={classes.calendarTodayIcon} />
               {endDate.format('DD MM YYYY')}
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
         </Grid>
       </Grid>
       <DesktopDatePicker

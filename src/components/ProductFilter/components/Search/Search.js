@@ -52,7 +52,7 @@ const Search = props => {
           className={classes.searchInput}
           disableUnderline
           onChange={handleinputchange('searchcontent')}
-          placeholder="Search by order id, Name and Mobile"
+          placeholder="Search by Username, Email, Mobile, City"
         />
       </Paper>
       <Button

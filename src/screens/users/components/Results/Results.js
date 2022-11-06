@@ -10,7 +10,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Checkbox,
+  IconButton,
   Divider,
   Typography,
   Avatar,
@@ -25,6 +25,14 @@ import {
 } from '@mui/material';
 
 import { Label,  TableEditBar,GenericMoreButton } from '../../../../components';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -32,7 +40,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   content: {
-    padding: 0
+    padding: 0,
+    overflow: "auto"
   },
   nodataCont: {
     textAlign: "center",
@@ -47,6 +56,17 @@ const useStyles = makeStyles(theme => ({
   actions: {
     padding: theme.spacing(0, 1),
     justifyContent: 'flex-end'
+  },
+  paginationCss: {
+    // backgroundColor: "red",
+    [theme.breakpoints.up('xs')]: {
+      "& .MuiInputBase-colorPrimary":{
+        marginRight: 5
+      },
+      "& .MuiTablePagination-toolbar": {
+        paddingLeft: 0
+      }
+    }
   }
 }));
 
@@ -58,6 +78,17 @@ const Results = props => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleSelectAll = event => {
     const selectedOrders = event.target.checked
@@ -117,7 +148,7 @@ const Results = props => {
         <CardContent className={classes.content}>
             <div className={classes.inner}>
             <TableContainer className={classes.container}>
-              <Table>
+              <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
                     {/* <TableCell padding="checkbox">
@@ -132,19 +163,17 @@ const Results = props => {
                       />
                     </TableCell> */}
                     <TableCell>S no</TableCell>
-                    <TableCell>Image</TableCell>
-                    <TableCell>Product Name</TableCell>
-                    <TableCell>Product ID</TableCell>
-                    <TableCell>Purchase Price</TableCell>
-                    <TableCell>Selling Price</TableCell>
-                    <TableCell>Tax</TableCell>
-                    <TableCell>Current Stock</TableCell>
-                    <TableCell>SKU Count</TableCell>
-                    <TableCell>Category</TableCell>
-                    <TableCell>Brand</TableCell>
-                    <TableCell>status</TableCell>
-                    <TableCell>CreatedAt</TableCell>
+                    <TableCell>User Id</TableCell>
+                    <TableCell>Profile Pic</TableCell>
+                    <TableCell>Family Pic</TableCell>
+                    <TableCell>User Name</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>Mobile</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Father Name</TableCell>
+                    <TableCell>Status</TableCell>
                     <TableCell align="center">Edit</TableCell>
+                    <TableCell align="center">Delete</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -165,7 +194,10 @@ const Results = props => {
                         {index+1}
                         
                       </TableCell>
-
+                      <TableCell>{order.product_id}</TableCell>
+                      <TableCell>                        
+                        <Avatar alt={order.productname} src={`http://128.199.83.45/moogambika_dev${order.image}`} />
+                      </TableCell>
                       <TableCell>                        
                         <Avatar alt={order.productname} src={`http://128.199.83.45/moogambika_dev${order.image}`} />
                       </TableCell>
@@ -174,10 +206,6 @@ const Results = props => {
                       <TableCell>{order.purchase_price}</TableCell>
                       <TableCell>{order.selling_price}</TableCell>
                       <TableCell>{order.tax}</TableCell>
-                      <TableCell>{order.current_stock}</TableCell>
-                      <TableCell>{order.sku_count}</TableCell>
-                      <TableCell>{order.category}</TableCell>
-                      <TableCell>{order.brand}</TableCell>
 
                       <TableCell>
                          <Label
@@ -188,17 +216,19 @@ const Results = props => {
                         </Label>
 
                       </TableCell>
-                      <TableCell>
-
-                      <Typography variant="body1">
-                          {moment(order.created_at).format(
-                            'DD MMM YYYY hh:mm a' 
-                          )}
-                        </Typography>
-                      </TableCell>
                             
                       <TableCell align="center">
-                        <GenericMoreButton />
+                        <IconButton aria-label="edit">
+                          <EditIcon />
+                        </IconButton>
+                      </TableCell>
+                      <TableCell align="center">
+                        <IconButton aria-label="delete" 
+                            // action={()=>handleClickOpen()} 
+                            onClick={()=>handleClickOpen()}
+                          >
+                            <DeleteIcon />
+                        </IconButton>
                       </TableCell>
                       
                     </TableRow>
@@ -220,10 +250,36 @@ const Results = props => {
             page={page}
             rowsPerPage={rowsPerPage}
             rowsPerPageOptions={[5, 10, 25]}
+            className={classes.paginationCss}
           />
         </CardActions>
       </Card>
       <TableEditBar selected={selectedOrders} />
+
+
+      {/* Delete iteam confirmatiom modal */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        // PaperComponent={PaperComponent}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle variant={"h4"} style={{ cursor: 'move' }} id="draggable-dialog-title">
+          Delate User infro
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText variant={"h5"} >
+              Do you confirm to delete the information. 
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button color={"inherit"} autoFocus onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant={"contained"} color={"error"} onClick={handleClose}>Delete</Button>
+        </DialogActions>
+      </Dialog>
+
     </div>
   );
 };
