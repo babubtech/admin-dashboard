@@ -254,7 +254,7 @@ const Results = props => {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle variant={"h4"} style={{ cursor: 'move' }} id="draggable-dialog-title">
-          Delate User infro
+          Delete Advisement Information
         </DialogTitle>
         <DialogContent>
           <DialogContentText variant={"h5"} >

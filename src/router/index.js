@@ -12,7 +12,8 @@ import {
   Login,
   Dashboard,
   Users,
-  ManageAd
+  ManageAd,
+  Profile
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -47,6 +48,13 @@ const RouterApp = (props) => {
         <Route path={AppRoutes.manageAd} element={
           <PrivateRouter path={AppRoutes.manageAd}>
             <ManageAd />
+          </PrivateRouter>
+        } />
+
+        {/* Profile Ad Route */}
+        <Route path={AppRoutes.profile} element={
+          <PrivateRouter path={AppRoutes.profile}>
+            <Profile />
           </PrivateRouter>
         } />
 
