@@ -21,199 +21,170 @@ import PersonIcon from '@mui/icons-material/PersonOutlined';
 import ReceiptIcon from '@mui/icons-material/ReceiptOutlined';
 import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import FeedIcon from '@mui/icons-material/Feed';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import SupportIcon from '@mui/icons-material/Support';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import LockResetIcon from '@mui/icons-material/LockReset';
 
 import Label from './components/label';
 
 export default [
   {
-    title: 'Pages',
+    title: 'Analytics',
     pages: [
       {
         title: 'Dashboard',
         href: '/dashboard',
         icon: HomeIcon
       },
+      // {
+      //   title: 'Dashboards',
+      //   href: '/dashboards',
+      //   icon: DashboardIcon,
+      //   children: [
+      //     {
+      //       title: 'Default',
+      //       href: '/dashboards/default'
+      //     },
+      //     {
+      //       title: 'Analytics',
+      //       href: '/dashboards/analytics'
+      //     }
+      //   ]
+      // },
       {
-        title: 'Dashboards',
-        href: '/dashboards',
-        icon: DashboardIcon,
-        children: [
-          {
-            title: 'Default',
-            href: '/dashboards/default'
-          },
-          {
-            title: 'Analytics',
-            href: '/dashboards/analytics'
-          }
-        ]
-      },
-      {
-        title: 'Management',
+        title: 'Matrimony Dashboard',
         href: '/',
         icon: BarChartIcon,
-        children: [
-          {
-            title: 'Customers',
-            href: '/'
-          },
-          {
-            title: 'Customer Details',
-            href: '/'
-          },
-          {
-            title: 'Projects',
-            href: '/'
-          },
-          {
-            title: 'Orders',
-            href: '/'
-          },
-          {
-            title: 'Order Details',
-            href: '/'
-          }
-        ]
       },
-      {
-        title: 'Users',
-        href: '/users',
-        icon: PeopleIcon
-      },
-      {
-        title: 'Profile',
-        href: '/',
-        icon: PersonIcon,
-        children: [
-          {
-            title: 'Timeline',
-            href: '/'
-          },
-          {
-            title: 'Connections',
-            href: '/'
-          },
-          {
-            title: 'Projects',
-            href: '/'
-          },
-          {
-            title: 'Reviews',
-            href: '/'
-          }
-        ]
-      },
-      {
-        title: 'Project',
-        href: '/',
-        icon: FolderIcon,
-        children: [
-          {
-            title: 'Browse',
-            href: '/'
-          },
-          {
-            title: 'Create',
-            href: '/'
-          },
-          {
-            title: 'Overview',
-            href: '/'
-          },
-          {
-            title: 'Files',
-            href: '/'
-          },
-          {
-            title: 'Activity',
-            href: '/'
-          },
-          {
-            title: 'Subscribers',
-            href: '/'
-          }
-        ]
-      },
-      {
-        title: 'Invoice',
-        href: '/',
-        icon: ReceiptIcon
-      },
-      {
-        title: 'Kanban Board',
-        href: '/',
-        icon: ListAltIcon
-      },
-      {
-        title: 'Mail',
-        href: '/',
-        icon: MailIcon,
-        label: () => (
-          <Label
-            color={colors.red[500]}
-            shape="rounded"
-          >
-            2
-          </Label>
-        )
-      },
-      {
-        title: 'Chat',
-        href: '/',
-        icon: ChatIcon,
-        label: () => (
-          <Label
-            color={colors.red[500]}
-            shape="rounded"
-          >
-            4
-          </Label>
-        )
-      },
-      {
-        title: 'Calendar',
-        href: '/',
-        icon: CalendarTodayIcon,
-        label: () => <Label color={colors.green[500]}>New</Label>
-      },
-      {
-        title: 'Settings',
-        href: '/',
-        icon: SettingsIcon,
-        children: [
-          {
-            title: 'General',
-            href: '/'
-          },
-          {
-            title: 'Subscription',
-            href: '/'
-          },
-          {
-            title: 'Notifications',
-            href: '/'
-          },
-          {
-            title: 'Security',
-            href: '/'
-          }
-        ]
-      },
-      {
-        title: 'Authentication',
-        href: '/',
-        icon: LockOpenIcon,
-        children: [
-          {
-            title: 'Login',
-            href: '/'
-          },
-          {
-            title: 'Register',
-            href: '//register'
-          }
-        ]
-      },
+      // {
+      //   title: 'Profile',
+      //   href: '/',
+      //   icon: PersonIcon,
+      //   children: [
+      //     {
+      //       title: 'Timeline',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Connections',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Projects',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Reviews',
+      //       href: '/'
+      //     }
+      //   ]
+      // },
+      // {
+      //   title: 'Project',
+      //   href: '/',
+      //   icon: FolderIcon,
+      //   children: [
+      //     {
+      //       title: 'Browse',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Create',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Overview',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Files',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Activity',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Subscribers',
+      //       href: '/'
+      //     }
+      //   ]
+      // },
+      // {
+      //   title: 'Mail',
+      //   href: '/',
+      //   icon: MailIcon,
+      //   label: () => (
+      //     <Label
+      //       color={colors.red[500]}
+      //       shape="rounded"
+      //     >
+      //       2
+      //     </Label>
+      //   )
+      // },
+      // {
+      //   title: 'Chat',
+      //   href: '/',
+      //   icon: ChatIcon,
+      //   label: () => (
+      //     <Label
+      //       color={colors.red[500]}
+      //       shape="rounded"
+      //     >
+      //       4
+      //     </Label>
+      //   )
+      // },
+      // {
+      //   title: 'Calendar',
+      //   href: '/',
+      //   icon: CalendarTodayIcon,
+      //   label: () => <Label color={colors.green[500]}>New</Label>
+      // },
+      // {
+      //   title: 'Settings',
+      //   href: '/',
+      //   icon: SettingsIcon,
+      //   children: [
+      //     {
+      //       title: 'General',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Subscription',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Notifications',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Security',
+      //       href: '/'
+      //     }
+      //   ]
+      // },
+      // {
+      //   title: 'Authentication',
+      //   href: '/',
+      //   icon: LockOpenIcon,
+      //   children: [
+      //     {
+      //       title: 'Login',
+      //       href: '/'
+      //     },
+      //     {
+      //       title: 'Register',
+      //       href: '//register'
+      //     }
+      //   ]
+      // },
       {
         title: 'Errors',
         href: '/',
@@ -236,27 +207,110 @@ export default [
     ]
   },
   {
+    title: "Masters",
+    pages: [
+      {
+        title: 'User Status Master',
+        href: '/users',
+        icon: PeopleIcon
+      },
+      {
+        title: "Feed Category Master",
+        href: "/",
+        icon: ReceiptIcon
+      },
+      {
+        title: "Kulam Master",
+        href: "/",
+        icon: ListAltIcon
+      }
+    ]
+  },
+  {
+    title: "User Management",
+    pages: [
+      {
+        title: 'App Users',
+        href: '/users',
+        icon: PeopleIcon
+      },
+      {
+        title: 'Admin Users',
+        href: '/',
+        icon: GroupAddIcon
+      },
+      {
+        title: 'Events',
+        href: '/',
+        icon: CalendarTodayIcon
+      },
+      {
+        title: 'Chat',
+        href: '/',
+        icon: ChatIcon,
+        label: () => (
+          <Label
+            color={colors.red[500]}
+            shape="rounded"
+          >
+            4
+          </Label>
+        )
+      }
+    ]
+  },
+  {
+    title: "Feed",
+    pages: [
+      {
+        title: 'Posts',
+        href: '/',
+        icon: FeedIcon
+      }
+    ]
+  },
+  {
+    title: "Matrimony",
+    pages: [
+      {
+        title: 'Profiles',
+        href: '/',
+        icon: AssignmentIndIcon
+      },
+      {
+        title: 'Subscriptions',
+        href: '/',
+        icon: CardMembershipIcon
+      },
+      {
+        title: 'Plans',
+        href: '/',
+        icon: WorkspacePremiumIcon
+      }
+    ]
+  },
+  {
     title: 'Settings',
     pages: [
       {
+        title: 'Support',
+        href: '/',
+        icon: SupportIcon
+      },
+      {
+        title: 'Announcement',
+        href: '/',
+        icon: AnnouncementIcon
+      },
+      {
         title: 'Profile',
         href: '/profile',
-        icon: AssignmentIndIcon
+        icon: AdminPanelSettingsIcon
       },
       {
         title: 'Change Password',
         href: '/',
-        icon: LockOpenIcon
-      },
-      {
-        title: 'Preferences',
-        href: '/',
-        icon: CodeIcon
-      },
-      {
-        title: 'Settings',
-        href: '/settings',
-        icon: SettingIcon
+        icon: LockResetIcon
       },
       {
         title: 'Changelog',

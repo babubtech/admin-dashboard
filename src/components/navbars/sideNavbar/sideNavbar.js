@@ -71,7 +71,7 @@ export const SideNavBar = (props) => {
           >
             {/* {session.user.first_name} {session.user.last_name} */}
           </Typography>
-          <Typography variant="body2">{"User Name"}</Typography>
+          <Typography variant="body2">{"KCDS Admin"}</Typography>
           <Typography variant="body2" color={"ActiveCaption"} >{"Admin"}</Typography>
         </div>
         <Divider className={classes.divider} />
