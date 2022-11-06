@@ -29,6 +29,9 @@ import SupportIcon from '@mui/icons-material/Support';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LockResetIcon from '@mui/icons-material/LockReset';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import BusinessIcon from '@mui/icons-material/Business';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 
 import Label from './components/label';
 
@@ -286,6 +289,26 @@ export default [
         title: 'Plans',
         href: null,
         icon: WorkspacePremiumIcon
+      }
+    ]
+  },
+  {
+    pages: [
+      {
+        title: "Manage Ad",
+        href: "/managead",
+        icon: AddchartIcon
+      },
+      {
+        title: "Manage Survey",
+        href: null,
+        icon: BusinessIcon
+
+      },
+      {
+        title: "Manage App Content",
+        href: null,
+        icon: HomeRepairServiceIcon
       }
     ]
   },

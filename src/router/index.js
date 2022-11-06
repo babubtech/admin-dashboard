@@ -9,10 +9,10 @@ import PrivateRouter from "./privateRouter";
 
 import {
   NotFound,
-  Home,
   Login,
   Dashboard,
-  Users
+  Users,
+  ManageAd
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -40,6 +40,13 @@ const RouterApp = (props) => {
         <Route path={AppRoutes.users} element={
           <PrivateRouter path={AppRoutes.users}>
             <Users />
+          </PrivateRouter>
+        } />
+
+        {/* Manage Ad Route */}
+        <Route path={AppRoutes.manageAd} element={
+          <PrivateRouter path={AppRoutes.manageAd}>
+            <ManageAd />
           </PrivateRouter>
         } />
 

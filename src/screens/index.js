@@ -3,3 +3,4 @@ export { default as Home } from "./home";
 export { default as Login } from "./login";
 export { default as Dashboard } from './dashboard';
 export { default as Users } from './users';
+export { default as ManageAd } from './manageAd';
