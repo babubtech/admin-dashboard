@@ -63,61 +63,61 @@ export default [
       },
       // {
       //   title: 'Profile',
-      //   href: '/',
+      //   href: null,
       //   icon: PersonIcon,
       //   children: [
       //     {
       //       title: 'Timeline',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Connections',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Projects',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Reviews',
-      //       href: '/'
+      //       href: null
       //     }
       //   ]
       // },
       // {
       //   title: 'Project',
-      //   href: '/',
+      //   href: null,
       //   icon: FolderIcon,
       //   children: [
       //     {
       //       title: 'Browse',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Create',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Overview',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Files',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Activity',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Subscribers',
-      //       href: '/'
+      //       href: null
       //     }
       //   ]
       // },
       // {
       //   title: 'Mail',
-      //   href: '/',
+      //   href: null,
       //   icon: MailIcon,
       //   label: () => (
       //     <Label
@@ -130,7 +130,7 @@ export default [
       // },
       // {
       //   title: 'Chat',
-      //   href: '/',
+      //   href: null,
       //   icon: ChatIcon,
       //   label: () => (
       //     <Label
@@ -143,41 +143,41 @@ export default [
       // },
       // {
       //   title: 'Calendar',
-      //   href: '/',
+      //   href: null,
       //   icon: CalendarTodayIcon,
       //   label: () => <Label color={colors.green[500]}>New</Label>
       // },
       // {
       //   title: 'Settings',
-      //   href: '/',
+      //   href: null,
       //   icon: SettingsIcon,
       //   children: [
       //     {
       //       title: 'General',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Subscription',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Notifications',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Security',
-      //       href: '/'
+      //       href: null
       //     }
       //   ]
       // },
       // {
       //   title: 'Authentication',
-      //   href: '/',
+      //   href: null,
       //   icon: LockOpenIcon,
       //   children: [
       //     {
       //       title: 'Login',
-      //       href: '/'
+      //       href: null
       //     },
       //     {
       //       title: 'Register',
@@ -187,20 +187,20 @@ export default [
       // },
       {
         title: 'Errors',
-        href: '/',
+        href: null,
         icon: ErrorIcon,
         children: [
           {
             title: 'Error 401',
-            href: '/'
+            href: null
           },
           {
             title: 'Error 404',
-            href: '/'
+            href: null
           },
           {
             title: 'Error 500',
-            href: '/'
+            href: null
           }
         ]
       }
@@ -216,12 +216,12 @@ export default [
       },
       {
         title: "Feed Category Master",
-        href: "/",
+        href: null,
         icon: ReceiptIcon
       },
       {
         title: "Kulam Master",
-        href: "/",
+        href: null,
         icon: ListAltIcon
       }
     ]
@@ -236,17 +236,17 @@ export default [
       },
       {
         title: 'Admin Users',
-        href: '/',
+        href: null,
         icon: GroupAddIcon
       },
       {
         title: 'Events',
-        href: '/',
+        href: null,
         icon: CalendarTodayIcon
       },
       {
         title: 'Chat',
-        href: '/',
+        href: null,
         icon: ChatIcon,
         label: () => (
           <Label
@@ -264,7 +264,7 @@ export default [
     pages: [
       {
         title: 'Posts',
-        href: '/',
+        href: null,
         icon: FeedIcon
       }
     ]
@@ -274,17 +274,17 @@ export default [
     pages: [
       {
         title: 'Profiles',
-        href: '/',
+        href: null,
         icon: AssignmentIndIcon
       },
       {
         title: 'Subscriptions',
-        href: '/',
+        href: null,
         icon: CardMembershipIcon
       },
       {
         title: 'Plans',
-        href: '/',
+        href: null,
         icon: WorkspacePremiumIcon
       }
     ]
@@ -294,12 +294,12 @@ export default [
     pages: [
       {
         title: 'Support',
-        href: '/',
+        href: null,
         icon: SupportIcon
       },
       {
         title: 'Announcement',
-        href: '/',
+        href: null,
         icon: AnnouncementIcon
       },
       {
@@ -309,12 +309,12 @@ export default [
       },
       {
         title: 'Change Password',
-        href: '/',
+        href: null,
         icon: LockResetIcon
       },
       {
         title: 'Changelog',
-        href: '/',
+        href: null,
         icon: ViewModuleIcon,
         label: () => <Label color={colors.blue['500']}>v1.2.0</Label>
       }

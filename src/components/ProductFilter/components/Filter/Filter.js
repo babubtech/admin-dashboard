@@ -298,14 +298,13 @@ const Filter = props => {
         onSubmit={handleSubmit}
       >
         <div className={classes.header}>
-          {/* <Button
+          <Typography style={{paddingLeft: 20, marginBottom: 10 }} variant={"h4"} >Filter</Typography>
+          <Button
             onClick={onClose}
             size="small"
           >
             <CloseIcon className={classes.buttonIcon} />
-            Close
-          </Button> */}
-          <Typography style={{paddingLeft: 20, marginBottom: 10 }} variant={"h4"} >Filter</Typography>
+          </Button>
         </div>
         <div className={classes.content}>
           <Grid container xs={12} spacing={1}>
@@ -381,17 +380,34 @@ const Filter = props => {
             </Grid>   
             {/* kulam */}
             <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
+                <Autocomplete
+                  // multiple
+                  id="combo-box-demo"
+                  options={[
+                    {
+                      value :"Podiyan",
+                      label: "Podiyan"
+                    },
+                    {
+                      value :'Pavalan',
+                      label: "Pavalan"
+                    },
+                    {
+                      value :'Gounder',
+                      label: "Gounder"
+                    },
+                    {
+                      value :'kongu vellala gounder',
+                      label: "kongu vellala gounder"
+                    }
+                  ]}
                   margin="dense"
                   fullWidth
-                  autoComplete="off"
-                  id="vendordeliverydays"
-                  name="vendordeliverydays"
                   value={values.kulam}
-                  onChange={handleinputchange('kulam')}
-                  label="Kulam"
-                />
+                  onChange={handleoptionchange('kulam')}
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => <TextField {...params} label={"Kulam"} fullWidth margin="dense" variant="outlined" />}
+                /> 
             </Grid>
 
             {/* country */}
@@ -459,7 +475,7 @@ const Filter = props => {
                   autoComplete="off"
                   id="vendordeliverydays"
                   name="vendordeliverydays"
-                  value={values.kulam}
+                  value={values.company}
                   onChange={handleinputchange('company')}
                   label="Company"
                 />
@@ -474,7 +490,7 @@ const Filter = props => {
                   autoComplete="off"
                   id="vendordeliverydays"
                   name="vendordeliverydays"
-                  value={values.kulam}
+                  value={values.education_institute}
                   onChange={handleinputchange('education_institute')}
                   label="Education Institute"
                 />
