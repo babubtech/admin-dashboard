@@ -34,7 +34,6 @@ NavigationList.propTypes = {
 
 const reduceChildRoutes = props => {
   const { router, items, page, depth } = props;
-debugger
   if (page.children) {
     // debugger
     // const open = matchPath(router.pathname, {
@@ -92,7 +91,6 @@ const Navigation = props => {
         pages={pages}
         router={router}
       />
-      {/* {JSON.stringify(router)} */}
     </Component>
   );
 };

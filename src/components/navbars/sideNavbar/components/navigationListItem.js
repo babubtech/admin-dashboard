@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { useState, forwardRef } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
@@ -8,14 +8,19 @@ import { ListItem, Button, Collapse, colors } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-const CustomRouterLink = forwardRef((props, ref) => (
-  <div
-    ref={ref}
-    style={{ flexGrow: 1 }}
-  >
-    <RouterLink {...props} />
-  </div>
-));
+const CustomRouterLink = forwardRef((props, ref) => { 
+  debugger
+  return(
+    <div
+      ref={ref}
+      style={{ flexGrow: 1 }}
+    >
+      <RouterLink
+          {...props}
+          className={props.location.pathname === props.to ? `${props.className} ${props.activeStyle}` : props.className }
+      />
+    </div>
+)});
 
 const useStyles = makeStyles(theme => ({
   item: {
@@ -69,7 +74,15 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightMedium,
     '& $icon': {
       color: theme.palette.primary.main
-    }
+    },
+  },
+  activeCss:{
+    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightMedium,
+    backgroundColor: "#3f51b51f",
+    '& $icon': {
+      color: theme.palette.primary.main
+    },
   }
 }));
 
@@ -85,7 +98,7 @@ const NavigationListItem = props => {
     label: Label,
     ...rest
   } = props;
-
+  const location = useLocation()
   const classes = useStyles();
   const [open, setOpen] = useState(openProp);
 
@@ -143,9 +156,11 @@ const NavigationListItem = props => {
           activeClassName={classes.active}
           className={clsx(classes.buttonLeaf, `depth-${depth}`)}
           component={CustomRouterLink}
+          activeStyle={classes.activeCss}
           exact
           style={style}
           to={href}
+          location={location}
         >
           {Icon && <Icon className={classes.icon} />}
           {title}

@@ -58,7 +58,7 @@ export default [
       // },
       {
         title: 'Matrimony Dashboard',
-        href: '/',
+        href: null,
         icon: BarChartIcon,
       },
       // {
