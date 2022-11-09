@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from 'react-router-dom';
-import { SubHeader } from '../../../components';
+import { FilesDropzone, SubHeader } from '../../../components';
 // import { AppRoutes } from '../../router/routes';
-import { Grid, TextField, Paper, Button } from "@mui/material";
+import { Grid, TextField, Paper, Button, Typography } from "@mui/material";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -74,6 +74,14 @@ export const AddUser = props => {
                             <FormControlLabel value="inactive" control={<Radio />} label="In-Active" />
                         </RadioGroup>
                     </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6} >
+                    <Typography variant={"h6"} sx={{paddingBottom: "12px"}} >Profile Pic</Typography>
+                    <FilesDropzone />
+                </Grid>
+                <Grid item xs={12} md={6} >
+                    <Typography variant={"h6"} sx={{paddingBottom: "12px"}} >Family Pic</Typography>
+                    <FilesDropzone />
                 </Grid>
             </Grid>
             </div>
