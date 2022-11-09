@@ -8,8 +8,7 @@ import { ListItem, Button, Collapse, colors } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-const CustomRouterLink = forwardRef((props, ref) => { 
-  debugger
+const CustomRouterLink = forwardRef((props, ref) => {
   return(
     <div
       ref={ref}

@@ -4,5 +4,7 @@ export const AppRoutes = {
   dashboard: '/dashboard',
   users: "/users",
   manageAd: "/manageAd",
-  profile: "/profile"
+  profile: "/profile",
+  statusMaster: "/masters/statusMaster",
+  masters: "/masters"
 };

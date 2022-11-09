@@ -34,6 +34,7 @@ import BusinessIcon from '@mui/icons-material/Business';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 
 import Label from './components/label';
+import { AppRoutes } from '../../../router/routes';
 
 export default [
   {
@@ -214,7 +215,7 @@ export default [
     pages: [
       {
         title: 'User Status Master',
-        href: '/users',
+        href: AppRoutes.statusMaster,
         icon: PeopleIcon
       },
       {
@@ -234,7 +235,7 @@ export default [
     pages: [
       {
         title: 'App Users',
-        href: '/users',
+        href: AppRoutes.users,
         icon: PeopleIcon
       },
       {

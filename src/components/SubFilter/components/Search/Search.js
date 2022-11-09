@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Search = props => {
-  const { onSearch, className, ...rest } = props;
+  const { onSearch, className, placeholder, ...rest } = props;
 
   const classes = useStyles();
   const [searchcontent, setSearchcontent] = React.useState('');
@@ -52,7 +52,7 @@ const Search = props => {
           className={classes.searchInput}
           disableUnderline
           onChange={handleinputchange('searchcontent')}
-          placeholder="Search by Username, Email, Mobile, City"
+          placeholder={placeholder}
         />
       </Paper>
       <Button

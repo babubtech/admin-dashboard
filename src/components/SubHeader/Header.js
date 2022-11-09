@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@mui/styles';
 import { Grid, Typography, Button } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Header = props => {
-  const { className, handleAddOpen, ...rest } = props;
+const SubHeader = props => {
+  const { className, handleAddOpen, title = '', buttonText="Add", ...rest } = props;
 
   const classes = useStyles();
 
@@ -29,40 +28,35 @@ const Header = props => {
         spacing={3}
       >
         <Grid item>
-          {/* <Typography
-            component="h2"
-            gutterBottom
-            variant="overline"
-          >
-            Management
-          </Typography> */}
           <Typography
             component="h1"
             variant="h3"
           >
-           Users List
+           {title}
           </Typography>
         </Grid>
         <Grid item>
-          <Button
-            color="primary"
-            variant="contained"
-            // component={RouterLink}
-            size="small"
-            // to={'/editproducts/1'}
-            onClick={handleAddOpen("paper")}
-          >
-            Add user
-          </Button> 
+          {handleAddOpen && 
+             <Button
+             color="primary"
+             variant="contained"
+             size={"medium"}
+             onClick={handleAddOpen()}
+           >
+             {buttonText}
+           </Button>
+          } 
         </Grid>
       </Grid>
     </div>
   );
 };
 
-Header.propTypes = {
+SubHeader.propTypes = {
   className: PropTypes.string,
-  handleAddOpen: PropTypes.func
+  handleAddOpen: PropTypes.func,
+  title: PropTypes.string,
+  buttonText: PropTypes.string
 };
 
-export default Header;
+export default SubHeader;
