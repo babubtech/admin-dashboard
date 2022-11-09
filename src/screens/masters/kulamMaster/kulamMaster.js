@@ -38,7 +38,7 @@ const fromField = [
     }
 ]
 
-export const StatusMaster = props => {
+export const KulamMaster = props => {
 
     const classes = useStyles();
     
@@ -85,7 +85,7 @@ export const StatusMaster = props => {
     }, [open]);
 
     return <div className={classes.root}>
-        <SubHeader title={"User Status Master"} buttonText={"Add Status Master"} handleAddOpen={handleClickOpen}/>
+        <SubHeader title={"Kulam Master"} buttonText={"Add Kulam Master"} handleAddOpen={handleClickOpen}/>
         
         <SubFilter 
             filter={{
@@ -94,16 +94,16 @@ export const StatusMaster = props => {
                 formJson: fromField
             }}
             search={{
-                placeholder: "Search by name",
+                placeholder: "Search by Kulam Name",
                 onSearch: ()=>null
             }}
         />
         
         <DataTable 
-            heading={"User Status Master"}
+            heading={"Kulam Master"}
             className={classes.results}
             orders={dataList}
-            header={[{name: "S No"}, {name: "User Name"}, {name: "Status"}, {name: "Edit", align: "right"}, {name: "Delete", align: "right"}]}
+            header={[{name: "S No"}, {name: "Kulam Name"}, {name: "Status"}, {name: "Edit", align: "right"}, {name: "Delete", align: "right"}]}
             dataList={[
                 [
                     {

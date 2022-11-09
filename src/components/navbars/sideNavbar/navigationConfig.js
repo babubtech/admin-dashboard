@@ -220,12 +220,12 @@ export default [
       },
       {
         title: "Feed Category Master",
-        href: null,
+        href: AppRoutes.categoryMaster,
         icon: ReceiptIcon
       },
       {
         title: "Kulam Master",
-        href: null,
+        href: AppRoutes.kulamMaster,
         icon: ListAltIcon
       }
     ]

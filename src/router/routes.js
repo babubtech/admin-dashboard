@@ -6,5 +6,7 @@ export const AppRoutes = {
   manageAd: "/manageAd",
   profile: "/profile",
   statusMaster: "/masters/statusMaster",
+  categoryMaster: "/masters/categoryMaster",
+  kulamMaster: '/kulamMaster',
   masters: "/masters"
 };

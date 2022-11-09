@@ -200,9 +200,6 @@ export const Users = props => {
           brand : "Aavin",
           status : 'active',
           createdAt : new Date(),
-  
-  
-  
         }
     ]);
 

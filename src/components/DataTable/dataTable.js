@@ -22,7 +22,7 @@ import {
   colors
 } from '@mui/material';
 
-import { Label,  TableEditBar } from '../../../../components';
+import { Label,  TableEditBar } from '../../components';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -68,8 +68,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Results = props => {
-  const { className, orders, ...rest } = props;
+const DataTable = props => {
+  const { className, orders, header=null, dataList=null, heading="",...rest } = props;
 
   const classes = useStyles();
 
@@ -103,6 +103,54 @@ const Results = props => {
     inactive: colors.red[600]
   };
 
+
+  const getTableComponent = (val, index) => {
+    switch (val.componentType) {
+      case 'count':
+        return(
+          <TableCell>{index+1}</TableCell>
+        )
+      case 'text':
+        return(
+          <TableCell>{val?.value??""}</TableCell>
+        )
+      case 'status':
+        return(
+          <TableCell>
+            <Label
+            color={paymentStatusColors[val?.value ? 'active' : 'inactive']}
+            variant="contained"
+          >
+            {val?.value ? 'Active' : 'In Active'}
+          </Label>
+
+        </TableCell>
+        )
+      case "editIcon":
+        return(
+          <TableCell align="right">
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton>
+          </TableCell>
+        )
+      case "deleteIcon":
+        return(
+        <TableCell align="right">
+          <IconButton aria-label="delete" 
+              // action={()=>handleClickOpen()} 
+              onClick={()=>handleClickOpen()}
+            >
+              <DeleteIcon />
+          </IconButton>
+        </TableCell>
+        )
+    
+      default:
+        break;
+    }
+  }
+
   return (
     <div
       {...rest}
@@ -112,7 +160,7 @@ const Results = props => {
       <Card>
         <CardHeader
           
-          title="Users List"
+          title={heading??""}
         />
         <Divider />
         <CardContent className={classes.content}>
@@ -121,45 +169,30 @@ const Results = props => {
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
-                    {/* <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={selectedOrders.length === orders.length}
-                        color="primary"
-                        indeterminate={
-                          selectedOrders.length > 0 &&
-                          selectedOrders.length < orders.length
-                        }
-                        onChange={handleSelectAll}
-                      />
-                    </TableCell> */}
-                    <TableCell>S no</TableCell>
-                    <TableCell>User Id</TableCell>
-                    <TableCell>Profile Pic</TableCell>
-                    <TableCell>Family Pic</TableCell>
-                    <TableCell>User Name</TableCell>
-                    <TableCell>Full Name</TableCell>
-                    <TableCell>Mobile</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Father Name</TableCell>
-                    <TableCell>Status</TableCell>
-                    <TableCell align="center">Edit</TableCell>
-                    <TableCell align="center">Delete</TableCell>
+                    {header && header.map((head, index) => {
+                      return(
+                        <TableCell align={head?.align??""}>{head?.name??""}</TableCell>  
+                      )
+                    })}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {orders.slice(0, rowsPerPage).map((order, index) => (
+                  {dataList.slice(0, rowsPerPage) && dataList.slice(0, rowsPerPage).map((data, index) => (
+                    <TableRow>
+                      {
+                        data && data?.map((val, i) => (
+                          getTableComponent(val, i)
+                        ))
+                      }
+                    </TableRow>
+                  ))}
+
+
+                  {/* {orders.slice(0, rowsPerPage).map((order, index) => (
                     <TableRow
                       key={order.id}
                       selected={selectedOrders.indexOf(order.id) !== -1}
                     >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={selectedOrders.indexOf(order.id) !== -1}
-                          color="primary"
-                          onChange={event => handleSelectOne(event, order.id)}
-                          value={selectedOrders.indexOf(order.id) !== -1}
-                        />
-                      </TableCell> */}
                       <TableCell>
                         {index+1}
                         
@@ -202,7 +235,7 @@ const Results = props => {
                       </TableCell>
                       
                     </TableRow>
-                  ))}
+                  ))} */}
                 </TableBody>
               </Table>
               {orders.length > 0 ? "" : <Typography className={classes.nodataCont} component={"h6"} >No Records found</Typography>}
@@ -254,13 +287,13 @@ const Results = props => {
   );
 };
 
-Results.propTypes = {
+DataTable.propTypes = {
   className: PropTypes.string,
   orders: PropTypes.array.isRequired
 };
 
-Results.defaultProps = {
+DataTable.defaultProps = {
   orders: []
 };
 
-export default Results;
+export default DataTable;

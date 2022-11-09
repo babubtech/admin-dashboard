@@ -14,7 +14,9 @@ import {
   Users,
   ManageAd,
   Profile,
-  StatusMaster
+  StatusMaster,
+  CategoryMaster,
+  KulamMaster
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -63,6 +65,18 @@ const RouterApp = (props) => {
         <Route path={AppRoutes.statusMaster} element={
           <PrivateRouter path={AppRoutes.statusMaster}>
             <StatusMaster />
+          </PrivateRouter>
+        } />
+
+        <Route path={AppRoutes.categoryMaster} element={
+          <PrivateRouter path={AppRoutes.categoryMaster}>
+            <CategoryMaster />
+          </PrivateRouter>
+        } />
+
+        <Route path={AppRoutes.kulamMaster} element={
+          <PrivateRouter path={AppRoutes.kulamMaster}>
+            <KulamMaster />
           </PrivateRouter>
         } />
 
