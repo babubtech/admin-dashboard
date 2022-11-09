@@ -268,7 +268,7 @@ const DataTable = props => {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle variant={"h4"} style={{ cursor: 'move' }} id="draggable-dialog-title">
-          Delete User infro
+          Delete this {heading??""}
         </DialogTitle>
         <DialogContent>
           <DialogContentText variant={"h5"} >
