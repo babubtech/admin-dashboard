@@ -294,6 +294,7 @@ export default [
     ]
   },
   {
+    title: "Survey & Ads",
     pages: [
       {
         title: "Manage Ad",

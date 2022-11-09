@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@mui/styles';
 import { Grid, Typography, Button } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { AppRoutes } from '../../../../router/routes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,10 +48,9 @@ const Header = props => {
           <Button
             color="primary"
             variant="contained"
-            // component={RouterLink}
+            component={RouterLink}
             size="small"
-            // to={'/editproducts/1'}
-            onClick={handleAddOpen("paper")}
+            to={AppRoutes.addUser}
           >
             Add user
           </Button> 

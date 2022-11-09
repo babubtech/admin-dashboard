@@ -5,4 +5,5 @@ export { default as Dashboard } from './dashboard';
 export { default as Users } from './users';
 export { default as ManageAd } from './manageAd';
 export { default as Profile } from './profile';
+export { default as AddUser } from "./users/addUser";
 export * from "./masters";

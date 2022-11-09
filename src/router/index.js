@@ -16,7 +16,8 @@ import {
   Profile,
   StatusMaster,
   CategoryMaster,
-  KulamMaster
+  KulamMaster,
+  AddUser
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -79,6 +80,14 @@ const RouterApp = (props) => {
             <KulamMaster />
           </PrivateRouter>
         } />
+
+        {/* addUser */}
+        <Route path={AppRoutes.addUser} element={
+          <PrivateRouter path={AppRoutes.addUser}>
+            <AddUser />
+          </PrivateRouter>
+        } />
+
 
         {/* Login Route */}
         <Route path={AppRoutes.login} element={<Login />} />

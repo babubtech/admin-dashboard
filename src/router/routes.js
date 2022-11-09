@@ -3,6 +3,7 @@ export const AppRoutes = {
   login: "/login",
   dashboard: '/dashboard',
   users: "/users",
+  addUser: "/adduser",
   manageAd: "/manageAd",
   profile: "/profile",
   statusMaster: "/masters/statusMaster",
