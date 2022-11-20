@@ -18,7 +18,8 @@ import {
   CategoryMaster,
   KulamMaster,
   AddUser,
-  Post
+  Post,
+  UserProfileList
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -89,10 +90,17 @@ const RouterApp = (props) => {
           </PrivateRouter>
         } />
 
-        {/* addUser */}
+        {/* post */}
         <Route path={AppRoutes.post} element={
           <PrivateRouter path={AppRoutes.post}>
             <Post />
+          </PrivateRouter>
+        } />
+
+        {/* user profile list */}
+        <Route path={AppRoutes.userProfileList} element={
+          <PrivateRouter path={AppRoutes.userProfileList}>
+            <UserProfileList />
           </PrivateRouter>
         } />
 

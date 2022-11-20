@@ -10,5 +10,6 @@ export const AppRoutes = {
   categoryMaster: "/masters/categoryMaster",
   kulamMaster: '/kulamMaster',
   masters: "/masters",
-  post: "/post"
+  post: "/post",
+  userProfileList: "/userslist"
 };

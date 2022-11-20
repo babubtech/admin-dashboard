@@ -278,7 +278,7 @@ export default [
     pages: [
       {
         title: 'Profiles',
-        href: null,
+        href: "/userslist",
         icon: AssignmentIndIcon
       },
       {

@@ -145,9 +145,18 @@ const DataTable = props => {
           </IconButton>
         </TableCell>
         )
-    
+      case "image":
+        return(
+          <TableCell>
+            <Avatar alt={val?.value} variant={"square"} src={val?.value??""} />
+          </TableCell>
+          )
       default:
-        break;
+        return(
+          <TableCell>
+           {""}
+          </TableCell>
+          )
     }
   }
 
