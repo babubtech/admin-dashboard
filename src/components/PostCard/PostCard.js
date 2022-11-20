@@ -123,8 +123,8 @@ const PostCard = props => {
             ))}
           </div>
         )}
-        <Divider className={classes.divider} />
-        <CommentForm />
+        {/* <Divider className={classes.divider} /> */}
+        {/* <CommentForm /> */}
       </CardContent>
     </Card>
   );
