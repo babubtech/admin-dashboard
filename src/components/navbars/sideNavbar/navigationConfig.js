@@ -268,7 +268,7 @@ export default [
     pages: [
       {
         title: 'Posts',
-        href: null,
+        href: "/post",
         icon: FeedIcon
       }
     ]
