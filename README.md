@@ -1,6 +1,4 @@
-# Crayond React Boilerplate
 
-This project was bootstrapped with Create React App and later it was developed into a Material UI powerd boiler plate with Apollo Client by the Crayond'd developers.
 
 ## Software Requirement
 1. NodeJS
