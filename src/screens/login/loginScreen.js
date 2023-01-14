@@ -10,7 +10,6 @@ import {
   Link,
   Avatar
 } from '@mui/material';
-import LockIcon from '@mui/icons-material/Lock';
 
 // import { Page } from 'components';
 // import { gradients } from '../../utils';
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     backgroundImage: "green",
-    color: theme.palette.white,
+    color: theme.palette.primary,
     borderRadius: theme.shape.borderRadius,
     padding: theme.spacing(1),
     position: 'absolute',
@@ -91,7 +90,7 @@ const Login = () => {
     >
       <Card className={classes.card}>
         <CardContent className={classes.content}>
-          <LockIcon className={classes.icon} />
+          {/* <LockIcon className={classes.icon} /> */}
           <Typography
             gutterBottom
             variant="h3"
@@ -102,8 +101,8 @@ const Login = () => {
             Sign in on the internal platform
           </Typography>
           <LoginForm className={classes.loginForm} />
-          <Divider className={classes.divider} />
-          <Link
+          {/* <Divider className={classes.divider} /> */}
+          {/* <Link
             align="center"
             color="secondary"
             component={RouterLink}
@@ -112,11 +111,11 @@ const Login = () => {
             variant="subtitle2"
           >
             Don't have an account?
-          </Link>
+          </Link> */}
         </CardContent>
         <CardMedia
           className={classes.media}
-          image="/images/auth.png"
+          image="/images/login_bg.png"
           title="Cover"
         >
           <Typography
@@ -130,7 +129,7 @@ const Login = () => {
             <Avatar
               alt="Person"
               className={classes.avatar}
-              src="/images/avatar_2.png"
+              src="/images/login_bg.jpeg"
             />
             <div>
               <Typography

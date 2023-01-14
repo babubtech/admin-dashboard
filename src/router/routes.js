@@ -11,5 +11,7 @@ export const AppRoutes = {
   kulamMaster: '/kulamMaster',
   masters: "/masters",
   post: "/post",
-  userProfileList: "/userslist"
+  userProfileList: "/userslist",
+  support: "/support",
+  announcement: "/announcement"
 };

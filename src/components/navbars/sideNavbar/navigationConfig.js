@@ -319,12 +319,12 @@ export default [
     pages: [
       {
         title: 'Support',
-        href: null,
+        href: '/support',
         icon: SupportIcon
       },
       {
         title: 'Announcement',
-        href: null,
+        href: '/announcement',
         icon: AnnouncementIcon
       },
       {

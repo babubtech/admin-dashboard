@@ -19,8 +19,10 @@ import {
   KulamMaster,
   AddUser,
   Post,
-  UserProfileList
+  UserProfileList,
+  ManageFeedback
 } from './../screens';
+import ManageAnouncement from "../screens/manageAnouncement";
 
 const RouterApp = (props) => {
   
@@ -104,7 +106,18 @@ const RouterApp = (props) => {
           </PrivateRouter>
         } />
 
-
+         {/* support */}
+         <Route path={AppRoutes.support} element={
+          <PrivateRouter path={AppRoutes.support}>
+            <ManageFeedback />
+          </PrivateRouter>
+        } />
+        {/* announcement */}
+           <Route path={AppRoutes.announcement} element={
+          <PrivateRouter path={AppRoutes.announcement}>
+            <ManageAnouncement />
+          </PrivateRouter>
+        } />
         {/* Login Route */}
         <Route path={AppRoutes.login} element={<Login />} />
 
