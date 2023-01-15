@@ -329,16 +329,16 @@ export default [
       },
       {
         title: 'Profile',
-        href: '/profile',
+        href: '/updateprofile',
         icon: AdminPanelSettingsIcon
       },
       {
         title: 'Change Password',
-        href: null,
+        href: "/changepassword",
         icon: LockResetIcon
       },
       {
-        title: 'Changelog',
+        title: 'Version',
         href: null,
         icon: ViewModuleIcon,
         label: () => <Label color={colors.blue['500']}>v1.2.0</Label>

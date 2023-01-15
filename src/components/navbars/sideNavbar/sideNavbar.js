@@ -62,7 +62,7 @@ export const SideNavBar = (props) => {
             alt="Person"
             className={classes.avatar}
             component={RouterLink}
-            src={session?.user?.avatar??"https://source.unsplash.com/user/c_v_r/100x100"}
+            src={session?.user?.avatar??"/images/login_bg.png"}
             to="/profile/1/timeline"
           />
           <Typography

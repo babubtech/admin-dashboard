@@ -5,6 +5,9 @@ export { default as Dashboard } from './dashboard';
 export { default as Users } from './users';
 export { default as ManageAd } from './manageAd';
 export { default as ManageFeedback } from './manageFeedback';
+export { default as UpdateProfile } from './updateProfile';
+export { default as ChangePassword } from './changePassword';
+export { default as AddAnnouncement } from './addAnnouncement';
 
 
 export { default as Profile } from './profile';

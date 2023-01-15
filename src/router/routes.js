@@ -13,5 +13,8 @@ export const AppRoutes = {
   post: "/post",
   userProfileList: "/userslist",
   support: "/support",
-  announcement: "/announcement"
+  announcement: "/announcement",
+  updateprofile: "/updateprofile",
+  changepassword: "/changepassword",
+  addannouncement: "/addannouncement"
 };

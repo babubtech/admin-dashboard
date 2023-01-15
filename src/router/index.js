@@ -20,7 +20,10 @@ import {
   AddUser,
   Post,
   UserProfileList,
-  ManageFeedback
+  ManageFeedback,
+  UpdateProfile,
+  ChangePassword,
+  AddAnnouncement
 } from './../screens';
 import ManageAnouncement from "../screens/manageAnouncement";
 
@@ -118,6 +121,25 @@ const RouterApp = (props) => {
             <ManageAnouncement />
           </PrivateRouter>
         } />
+          <Route path={AppRoutes.addannouncement} element={
+          <PrivateRouter path={AppRoutes.addannouncement}>
+            <AddAnnouncement />
+          </PrivateRouter>
+        } />
+         {/* changepassword */}
+         <Route path={AppRoutes.changepassword} element={
+          <PrivateRouter path={AppRoutes.changepassword}>
+            <ChangePassword />
+          </PrivateRouter>
+        } />
+
+         {/* updateprofile */}
+         <Route path={AppRoutes.updateprofile} element={
+          <PrivateRouter path={AppRoutes.updateprofile}>
+            <UpdateProfile />
+          </PrivateRouter>
+        } />
+
         {/* Login Route */}
         <Route path={AppRoutes.login} element={<Login />} />
 
