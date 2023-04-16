@@ -11,20 +11,51 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { Controller,useForm } from "react-hook-form";
+import {FormInputText}  from "../../../../components/form-components/FormInputText";
+import {FormInputRadio}  from "../../../../components/form-components/FormInputRadio";
+import { rules } from './rules';
 
 export const AddUserForm = props => {
+    const {onUpdatestatus, statusobj} = props;
+    const { handleSubmit, reset, control , setValue} = useForm();
+    const onSubmit = (data) =>  onUpdatestatus(data);
+    
 
+    const handleDismiss = () => {
+       
+        props.handleClose()
+    }
+    React.useEffect(() => {
+        if(statusobj.name)
+        {
+            setValue("id",statusobj.id)
+
+            setValue("kulamname",statusobj.name)
+            setValue("status",statusobj.is_active)
+            
+
+
+            // setValue({
+            //     ...statusobj
+            // })
+        }else{
+            reset()
+        }
+       
+    },[statusobj])
     return <Dialog
-            maxWidth={"sm"}
-            fullWidth 
-            open={props.open}
-            onClose={props.handleClose}
-            scroll={"paper"}
-            aria-labelledby="scroll-dialog-title"
-            aria-describedby="scroll-dialog-description"
-        >
-            <DialogTitle variant={"h4"} id="scroll-dialog-title">{"Add Kulam"}</DialogTitle>
-            <DialogContent dividers>
+        maxWidth={"sm"}
+        fullWidth
+        open={props.open}
+        // onClose={props.handleClose}
+        scroll={"paper"}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+    >
+        <DialogTitle variant={"h4"} id="scroll-dialog-title">{"Add Status"}</DialogTitle>
+        <form>
+        <DialogContent dividers>
             <DialogContentText
                 id="scroll-dialog-description"
                 ref={props.descriptionElementRef}
@@ -36,27 +67,42 @@ export const AddUserForm = props => {
             >
                 <Grid container spacing={2}>
                     <Grid item md={12} xs={12}>
-                        <TextField fullWidth id="outlined-basic" label="Kulam Name" variant="outlined" />
+                    <FormInputText name="kulamname" control={control} label="kulam Name" rules={
+                        rules.kulamname
+                    } />
                     </Grid>
-                    <Grid item md={6} xs={12}>
-                        <FormControl>
-                            <FormLabel id="demo-row-radio-buttons-group-label">Status</FormLabel>
-                            <RadioGroup
-                                row
-                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                name="row-radio-buttons-group"
-                            >
-                                <FormControlLabel value="female" control={<Radio />} label="Active" />
-                                <FormControlLabel value="male" control={<Radio />} label="In-Active" />
-                            </RadioGroup>
-                        </FormControl>
+                    
+                     <Grid item md={12} xs={12}>
+
+                        <FormInputRadio
+                            name={"status"}
+                            control={control}
+                            label={"Radio Input"}
+                            row = {true}
+                            options={
+                                [
+                                    {
+                                      label: "Active",
+                                      value: true,
+                                    },
+                                    {
+                                      label: "Inactive",
+                                      value: false,
+                                    },
+                                  ]
+                            }
+                        />
+                       
                     </Grid>
+                   
                 </Grid>
             </DialogContentText>
-            </DialogContent>
-            <DialogActions sx={{padding: 2}}>
-                <Button onClick={props.handleClose}>Cancel</Button>
-                <Button onClick={props.handleClose} variant={"contained"} >Submit</Button>
-            </DialogActions>
+        </DialogContent>
+        <DialogActions sx={{ padding: 2 }}>
+            <Button onClick={handleDismiss}>Cancel</Button>
+            <Button onClick={handleSubmit(onSubmit)} variant={"contained"} >Submit</Button>
+            
+        </DialogActions>
+        </form>
     </Dialog>
 }

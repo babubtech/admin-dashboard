@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { makeStyles } from "@mui/styles";
 import { AddUserForm } from "./AddUser";
 import { DataTable, SubFilter, SubHeader } from '../../../components';
+import { NetworkContext } from '../../../context/NetworkContext';
+import utils from '../../../redux/slices/utils';
+import Results  from './Results';
+import { SnackBarContext } from "../../../context/SnackbarContext";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { async } from 'validate.js';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,26 +47,12 @@ const fromField = [
 export const CategoryMaster = props => {
 
     const classes = useStyles();
-    
-    const [dataList, setDataList] = useState([
-        {
-          product_image : "test.png",
-          product_name : "Milk",
-          product_id : "BBM0001",
-          purchase_price : '30',
-          selling_price : "35",
-          tax : "3",
-          current_stock : 100,
-          sku_count : 10,
-          category : "Milk",
-          brand : "Aavin",
-          status : 'active',
-          createdAt : new Date(),
-  
-  
-  
-        }
-    ]);
+    const { sendNetworkRequest } = React.useContext(NetworkContext);
+    const snackbarCtx = React.useContext(SnackBarContext);
+
+    const [dataList, setDataList] = useState([]);
+    const [confirmdialog, setConfirmdialog] = useState(false);
+    const [statusobj, setStatusobj] = useState({});
 
 
     const [open, setOpen] = React.useState(false);
@@ -69,12 +61,54 @@ export const CategoryMaster = props => {
         setOpen(true);
     };
 
+    
+    const updateuserstatus = async (userobj) => {
+        let units = await sendNetworkRequest('/master/modifycategory', {}, userobj,false)
+        snackbarCtx.setSnack({
+            ...snackbarCtx,
+            open: true,
+            type: "success",
+            msg: "Saved Successfully",
+            vertical: "top",
+          });
+        handleClose()
+        fetuserstatus()
+    }
+    const handlesearch =  (content) => {
+        alert("content")
+    }
+    const handleedit =  (userobj) => {
+        setStatusobj(userobj)
+        setOpen(true);
+    };
+    const handledelete =  (userobj) => {
+        changeuserstatus(userobj)
+       // setConfirmdialog(true);
+    };
+
+    const changeuserstatus = async (userobj) => {
+        let bodycontent = {
+            id : userobj.id,
+            status : userobj.status
+        }
+         await sendNetworkRequest('/master/updateuserstatus', {}, userobj,false)
+         fetuserstatus()
+    }
     const handleClose = () => {
         setOpen(false);
     };
 
     const descriptionElementRef = React.useRef(null);
-
+    React.useEffect(() => {
+        snackbarCtx.setSnack({
+            ...snackbarCtx,
+            open: true,
+            type: "success",
+            msg: "Saved Successfully",
+            vertical: "top",
+          });
+        fetuserstatus()
+    },[])
     React.useEffect(() => {
         if (open) {
              const { current: descriptionElement } = descriptionElementRef;
@@ -83,54 +117,67 @@ export const CategoryMaster = props => {
         }
         }
     }, [open]);
+    async function fetuserstatus()
+    {
+      let units = await sendNetworkRequest('/master/fetchcategorymaster', {}, {},false)
+      setDataList(units.data);
 
+     
+    }
+    const handleconfirmClose = () => {
+        setConfirmdialog(false);
+      };
     return <div className={classes.root}>
+      <Dialog
+        open={confirmdialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Are you sure want to delete status?"}
+        </DialogTitle>
+       
+        <DialogActions>
+          <Button color="error" onClick={handleconfirmClose}>Cancel</Button>
+          <Button onClick={handleconfirmClose} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
         <SubHeader title={"Category Master"} buttonText={"Add Category Master"} handleAddOpen={handleClickOpen}/>
         
         <SubFilter 
+            is_fiter = {false}
             filter={{
                 buttonName: "Advance filter",
                 onFilter: ()=>null,
                 formJson: fromField
             }}
             search={{
-                placeholder: "Search by Category Name",
-                onSearch: ()=>null
+                placeholder: "Search by Category",
+                onSearch: {handlesearch}
             }}
         />
         
-        <DataTable 
-            heading={"Category Master"}
+        {/* <DataTable 
+            heading={"User Status Master"}
             className={classes.results}
             orders={dataList}
-            header={[{name: "S No"}, {name: "Category Name"}, {name: "Status"}, {name: "Edit", align: "right"}, {name: "Delete", align: "right"}]}
-            dataList={[
-                [
-                    {
-                        componentType: "count",
-                        value: "1"
-                    },
-                    {
-                        componentType: "text",
-                        value: "Admin User"
-                    },
-                    {
-                        componentType: "status",
-                        value: "Active"
-                    },
-                    {
-                        componentType: "editIcon",
-                        align: "center"
-                    },
-                    {
-                        componentType: "deleteIcon",
-                        align: "center"
-                    }
-                ]
-            ]}
-        />
-
+            header={[{name: "S No",componentType: "count",key:"id"}, {name: "Name",
+            componentType: "text",key:"name"}, {name: "Status",componentType: "status",key:"is_active"}, {name: "Edit",componentType: "editIcon",key:"id", align: "right"}, {name: "Delete", componentType: "deleteIcon",key:"id", align: "right"}]}
+            dataList={dataList}
+        /> */}
+<Results
+         onEdit={handleedit}
+         onDelete={handledelete}
+        // onReset={resetpassword}
+         onUpdatestatus={updateuserstatus}
+        className={classes.results}
+        orders={dataList} //
+      />
         <AddUserForm 
+            statusobj= {statusobj}
+            onUpdatestatus={updateuserstatus}
             descriptionElementRef={descriptionElementRef} 
             handleClickOpen={handleClickOpen}  
             handleClose={handleClose}

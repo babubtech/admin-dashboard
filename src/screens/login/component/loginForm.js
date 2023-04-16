@@ -8,12 +8,13 @@ import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { LocalStorageKeys } from '../../../utils';
 import { AppRoutes } from '../../../router/routes';
+import { NetworkContext } from '../../../context/NetworkContext';
 
 
 const schema = {
-  email: {
+  username: {
     presence: { allowEmpty: false, message: 'is required' },
-    email: true
+    email: false
   },
   password: {
     presence: { allowEmpty: false, message: 'is required' }
@@ -42,6 +43,7 @@ const LoginForm = props => {
 
   const classes = useStyles();
   const navigate = useNavigate();
+  const { sendNetworkRequest } = React.useContext(NetworkContext);
 
   const [formState, setFormState] = useState({
     isValid: false,
@@ -81,7 +83,15 @@ const LoginForm = props => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    localStorage.setItem(LocalStorageKeys.authToken, "authtoken");
+    let body = {
+      username : formState.values.username,
+      password : formState.values.password
+    }
+    let res = await sendNetworkRequest('/auth/login', {}, body,false)
+    
+    localStorage.setItem(LocalStorageKeys.authToken, res.token);
+    localStorage.setItem(LocalStorageKeys.profile, JSON.stringify(res.profile));
+
     navigate(AppRoutes.dashboard);
   };
 
@@ -96,13 +106,13 @@ const LoginForm = props => {
     >
       <div className={classes.fields}>
         <TextField
-          error={hasError('email')}
+          error={hasError('username')}
           fullWidth
-          helperText={hasError('email') ? formState.errors.email[0] : null}
-          label="Email address"
-          name="email"
+          helperText={hasError('username') ? formState.errors.username[0] : null}
+          label="username"
+          name="username"
           onChange={handleChange}
-          value={formState.values.email || ''}
+          value={formState.values.username || ''}
           variant="outlined"
         />
         <TextField

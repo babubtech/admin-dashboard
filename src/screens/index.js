@@ -8,10 +8,11 @@ export { default as ManageFeedback } from './manageFeedback';
 export { default as UpdateProfile } from './updateProfile';
 export { default as ChangePassword } from './changePassword';
 export { default as AddAnnouncement } from './addAnnouncement';
+export { default as Admins } from './admins';
 
 
 export { default as Profile } from './profile';
 export { default as Post } from './post';
 export { default as UserProfileList } from "./userPofileList";
-export { default as AddUser } from "./users/addUser";
+export { default as AddUser } from "./users_bk/addUser";
 export * from "./masters";

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SubFilter = props => {
-  const { filter = {}, search = {}, masters, className, ...rest } = props;
+  const { filter = {}, search = {},is_fiter = false, masters, className, ...rest } = props;
   const { onSearch = ()=>null, placeholder = "search" } = search;
   const { onFilter = ()=>null, buttonName = "", formJson=null} = filter;
 
@@ -60,7 +60,7 @@ const SubFilter = props => {
           /> 
         }
       </Grid>
-      <Grid item>
+      {is_fiter && <Grid item>
         {Object.keys(filter).length > 0 &&
           <Button
             className={classes.filterButton}
@@ -73,8 +73,8 @@ const SubFilter = props => {
             {buttonName}
           </Button>
         }
-      </Grid>
-      <Filter
+      </Grid>}
+    <Filter
         onClose={handleFilterClose}
         onFilter={onFilter}
         open={openFilter}

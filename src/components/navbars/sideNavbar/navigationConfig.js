@@ -227,6 +227,11 @@ export default [
         title: "Kulam Master",
         href: AppRoutes.kulamMaster,
         icon: ListAltIcon
+      },
+      {
+        title: "Role Master",
+        href: AppRoutes.roleMaster,
+        icon: ListAltIcon
       }
     ]
   },
@@ -240,7 +245,7 @@ export default [
       },
       {
         title: 'Admin Users',
-        href: null,
+        href: AppRoutes.admins,
         icon: GroupAddIcon
       },
       {

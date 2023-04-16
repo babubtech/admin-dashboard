@@ -104,24 +104,24 @@ const DataTable = props => {
   };
 
 
-  const getTableComponent = (val, index) => {
-    switch (val.componentType) {
+  const getTableComponent = (componentType, index,val) => {
+    switch (componentType) {
       case 'count':
         return(
           <TableCell>{index+1}</TableCell>
         )
       case 'text':
         return(
-          <TableCell>{val?.value??""}</TableCell>
+          <TableCell>{val ??""}</TableCell>
         )
       case 'status':
         return(
           <TableCell>
             <Label
-            color={paymentStatusColors[val?.value ? 'active' : 'inactive']}
+            color={paymentStatusColors[val ? 'active' : 'inactive']}
             variant="contained"
           >
-            {val?.value ? 'Active' : 'In Active'}
+            {val ? 'Active' : 'In Active'}
           </Label>
 
         </TableCell>
@@ -148,7 +148,7 @@ const DataTable = props => {
       case "image":
         return(
           <TableCell>
-            <Avatar alt={val?.value} variant={"square"} src={val?.value??""} />
+            <Avatar alt={val} variant={"square"} src={val ??""} />
           </TableCell>
           )
       default:
@@ -189,8 +189,8 @@ const DataTable = props => {
                   {dataList.slice(0, rowsPerPage) && dataList.slice(0, rowsPerPage).map((data, index) => (
                     <TableRow>
                       {
-                        data && data?.map((val, i) => (
-                          getTableComponent(val, i)
+                        header && header?.map((val, i) => (
+                          getTableComponent(val.componentType, i,data[val.key])
                         ))
                       }
                     </TableRow>

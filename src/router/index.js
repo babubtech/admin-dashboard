@@ -17,7 +17,9 @@ import {
   StatusMaster,
   CategoryMaster,
   KulamMaster,
+  RoleMaster,
   AddUser,
+  Admins,
   Post,
   UserProfileList,
   ManageFeedback,
@@ -26,10 +28,12 @@ import {
   AddAnnouncement
 } from './../screens';
 import ManageAnouncement from "../screens/manageAnouncement";
+import {  NetworkProvider } from '../context/NetworkContext';
 
 const RouterApp = (props) => {
   
   return (
+  <NetworkProvider>
     <BrowserRouter>
       <Routes>
 
@@ -52,6 +56,12 @@ const RouterApp = (props) => {
         <Route path={AppRoutes.users} element={
           <PrivateRouter path={AppRoutes.users}>
             <Users />
+          </PrivateRouter>
+        } />
+          {/* admins Route */}
+          <Route path={AppRoutes.admins} element={
+          <PrivateRouter path={AppRoutes.admins}>
+            <Admins />
           </PrivateRouter>
         } />
 
@@ -87,7 +97,11 @@ const RouterApp = (props) => {
             <KulamMaster />
           </PrivateRouter>
         } />
-
+        <Route path={AppRoutes.roleMaster} element={
+          <PrivateRouter path={AppRoutes.roleMaster}>
+            <RoleMaster />
+          </PrivateRouter>
+        } />
         {/* addUser */}
         <Route path={AppRoutes.addUser} element={
           <PrivateRouter path={AppRoutes.addUser}>
@@ -147,6 +161,7 @@ const RouterApp = (props) => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </NetworkProvider>    
   );
 };
 

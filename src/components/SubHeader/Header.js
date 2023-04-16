@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SubHeader = props => {
-  const { className, handleAddOpen, title = '', buttonText="Add", ...rest } = props;
+  const { className, handleAddOpen, title = '', buttonText="Add",isadd=true, ...rest } = props;
 
   const classes = useStyles();
 
@@ -35,7 +35,7 @@ const SubHeader = props => {
            {title}
           </Typography>
         </Grid>
-        <Grid item>
+       {isadd  && <Grid item>
           {handleAddOpen && 
              <Button
              color="primary"
@@ -46,7 +46,7 @@ const SubHeader = props => {
              {buttonText}
            </Button>
           } 
-        </Grid>
+        </Grid>}
       </Grid>
     </div>
   );

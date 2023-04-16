@@ -3,3 +3,4 @@ export const config = {
     graphql_url: process.env.REACT_APP_GRAPHQL_BASE_URL,
     graphql_web_socket_url: process.env.REACT_APP_GRAPHQL_WEB_SOCKET_BASE_URL,
 }
+export const API_URL = process.env.REACT_APP_API_BASE_URL

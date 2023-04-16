@@ -1,6 +1,6 @@
 import React from "react";
-import { CategoryMaster } from './categoryMaster';
-import { withNavBars } from "./../../../HOCs";
+import { CategoryMaster } from './CategoryMaster';
+import { withNavBars } from "../../../HOCs";
 
 class CategoryMasterParent extends React.Component {
   render() {

@@ -28,7 +28,7 @@ export const Login = props => {
             navigate(LoginSuccess())
         }
         console.log("here")
-    })
+    },[])
 
     return <div className={classes.root}>
         <Typography variant="body1">

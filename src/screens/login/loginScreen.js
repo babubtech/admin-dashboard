@@ -10,6 +10,7 @@ import {
   Link,
   Avatar
 } from '@mui/material';
+import { LocalStorageKeys } from '../../utils';
 
 // import { Page } from 'components';
 // import { gradients } from '../../utils';
@@ -79,7 +80,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2)
   }
 }));
-
+// React.useEffect(() => {
+//   if (localStorage.getItem(LocalStorageKeys.authToken)) {
+//     navigate(AppRoutes.home);
+//   }
+//   console.log("here")
+// },[])
 const Login = () => {
   const classes = useStyles();
 

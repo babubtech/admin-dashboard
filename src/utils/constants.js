@@ -69,6 +69,7 @@ export const DrawerProps = {
  */
 export let LocalStorageKeys = {
     authToken: "auth_token",
+    profile: "profile",
     version: "version"
 };
 

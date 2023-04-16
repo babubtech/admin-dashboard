@@ -8,11 +8,11 @@ const PrivateRoute = ({ path, children, ...rest }) => {
 
   const isAuthenticated = (path) => {
     if (localStorage.getItem(LocalStorageKeys.authToken)) {
-      const _ = Access("role", path);
-      if (_ >= 0) {
-        return true;
-      };
-      return false;
+      // const _ = Access("role", path);
+      // if (_ >= 0) {
+      //   return false;
+      // };
+      return true;
     } else {
       return false;
     }
@@ -20,7 +20,9 @@ const PrivateRoute = ({ path, children, ...rest }) => {
 
   return (
     <>
+    {/* <div>{isAuthenticated(path) ? "true" : "false"}</div> */}
       {
+        
         isAuthenticated(path) ? children : (
           <Navigate
             to={AppRoutes.login}

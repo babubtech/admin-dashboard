@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect,useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,8 @@ import { Drawer, Divider, Paper, Avatar, Typography, Hidden } from '@mui/materia
 
 import Navigation from './components/navigation';
 import navigationConfig from './navigationConfig';
+import { LocalStorageKeys } from '../../../utils';
+import { parse } from 'graphql';
 
 const drawerWidth = 56;
 
@@ -46,7 +48,8 @@ export const SideNavBar = (props) => {
     const classes = useStyles();
     const router = useLocation();
     const session = useSelector(state => state.session);
-  
+    const [profile, setProfile] = useState({});
+
     useEffect(() => {
       if (openMobile) {
         onMobileClose && onMobileClose();
@@ -54,7 +57,13 @@ export const SideNavBar = (props) => {
   
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.pathname]);
-  
+    useEffect(() => {
+     let profileobj = localStorage.getItem(LocalStorageKeys.profile)
+     let profileobjnew = JSON.parse(profileobj)
+     
+        setProfile(profileobjnew);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const navbarContent = (
       <div className={classes.content}>
         <div className={classes.profile}>
@@ -71,8 +80,8 @@ export const SideNavBar = (props) => {
           >
             {/* {session.user.first_name} {session.user.last_name} */}
           </Typography>
-          <Typography variant="body2">{"KCDS Admin"}</Typography>
-          <Typography variant="body2" color={"ActiveCaption"} >{"Admin"}</Typography>
+          <Typography variant="body2">{profile?.name}</Typography>
+          <Typography variant="body2" color={"ActiveCaption"} >{profile?.role?.length > 0 ? profile?.role[0] : ""}</Typography>
         </div>
         <Divider className={classes.divider} />
         <nav className={classes.navigation}>
