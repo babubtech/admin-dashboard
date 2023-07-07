@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { makeStyles } from "@mui/styles";
-import { AddUserForm } from "./AddUser";
 import { DataTable, SubFilter, SubHeader } from '../../components';
 import { NetworkContext } from '../../context/NetworkContext';
 import utils from '../../redux/slices/utils';
@@ -188,7 +187,7 @@ export const Users = props => {
         masterstatus={statusList}
         orders={dataList} //
       />
-        <AddUserForm 
+        {/* <AddUserForm 
             statusobj= {statusobj}
             onUpdatestatus={updateuserstatus}
             descriptionElementRef={descriptionElementRef} 
@@ -196,7 +195,7 @@ export const Users = props => {
             handleClose={handleClose}
             
             open={open}
-        />
+        /> */}
        
     </div>
 }

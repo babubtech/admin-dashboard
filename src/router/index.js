@@ -15,7 +15,7 @@ import {
   ManageAd,
   Profile,
   StatusMaster,
-  CategoryMaster,
+ // CategoryMaster,
   KulamMaster,
   RoleMaster,
   AddUser,
@@ -86,11 +86,11 @@ const RouterApp = (props) => {
           </PrivateRouter>
         } />
 
-        <Route path={AppRoutes.categoryMaster} element={
+        {/* <Route path={AppRoutes.categoryMaster} element={
           <PrivateRouter path={AppRoutes.categoryMaster}>
             <CategoryMaster />
           </PrivateRouter>
-        } />
+        } /> */}
 
         <Route path={AppRoutes.kulamMaster} element={
           <PrivateRouter path={AppRoutes.kulamMaster}>
